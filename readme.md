@@ -45,6 +45,11 @@ Now `rcup` can be run without the environment variable set.
 
 I map my prefix/leader to `C-a` for easier typing.
 
+### Help, key bindings
+```
+<prefix> ?
+```
+
 ### Resource config files
 ```
 tmux source ~/.tmux.conf
