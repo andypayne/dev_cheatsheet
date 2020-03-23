@@ -45,7 +45,15 @@ Now `rcup` can be run without the environment variable set.
 
 I map my prefix/leader to `C-a` for easier typing.
 
-### New Session with <name>
+### Resource config files
+```
+tmux source ~/.tmux.conf
+```
+```
+<prefix> :source ~/.tmux.conf
+```
+
+### New Session with `<name>`
 ```
 tmux new -s <name>
 ```
@@ -72,6 +80,15 @@ Switch sessions quickly and visually with:
 <prefix> s
 ```
 
+### Tmux Plugin Manager
+
+Using [tpm](https://github.com/tmux-plugins/tpm)
+
+#### Install plugins and refresh
+
+```
+<prefix> I
+```
 
 
 ## Vim
