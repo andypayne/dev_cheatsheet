@@ -78,5 +78,10 @@ Switch sessions quickly and visually with:
 
 *TODO*
 
+```
+set clipboard=unnamed
+set clipboard=unnamedplus
+```
 
+Use `"+y` to yank to the system clipboard.
 
