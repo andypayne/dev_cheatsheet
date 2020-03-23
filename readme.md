@@ -93,7 +93,23 @@ Using [tpm](https://github.com/tmux-plugins/tpm)
 
 ## Vim
 
-*TODO*
+### System clipboard access (linux)
+
+Check for the proper compile flags:
+```
+vim --version | grep clipboard
+```
+
+You should have `+clipboard` and `+xterm_clipboard`. If not then install another
+vim, I used `vim-gnome`:
+
+```
+sudo apt install vim-gnome
+```
+
+Now you should have `+clipboard` and `+xterm_clipboard`. More info on the [Vim
+Tips Wiki](https://vim.fandom.com/wiki/Accessing_the_system_clipboard).
+
 
 ```
 set clipboard=unnamed
