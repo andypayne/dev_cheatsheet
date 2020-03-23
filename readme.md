@@ -1,4 +1,4 @@
-# Dev Environment Cheetsheat
+# Dev Environment Cheatsheet
 
 ## Dotfiles - Thoughtbot
 
