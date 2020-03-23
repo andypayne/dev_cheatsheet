@@ -61,6 +61,11 @@ tmux new -s <name>
 :new -s <name>
 ```
 
+### Rename a session
+```
+<prefix> $
+```
+
 ### Kill a session
 ```
 tmux kill-session -t <name>
