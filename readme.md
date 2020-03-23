@@ -118,3 +118,14 @@ set clipboard=unnamedplus
 
 Use `"+y` to yank to the system clipboard.
 
+
+### CtrlP and FZF
+
+To get CtrlP fuzzy file open working, I installed fzf from github:
+
+```
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+ ~/.fzf/install
+```
+And then edit the dotfiles to move the insertions into the local overrides.
+
