@@ -90,6 +90,10 @@ Switch sessions quickly and visually with:
 <prefix> s
 ```
 
+### Selecting text
+
+Hold shift and select text to copy from the terminal.
+
 ### Tmux Plugin Manager
 
 Using [tpm](https://github.com/tmux-plugins/tpm)
