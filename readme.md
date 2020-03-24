@@ -23,6 +23,15 @@ env RCRC=$HOME/dotfiles/rcrc rcup
 Now `rcup` can be run without the environment variable set.
 
 
+## Console/Shell
+
+### fzf
+
+- Trigger fzf and place the result at the command line: `C-t`
+- Change directory to the result of fzf: `M-c` (`Alt-c`)
+- Change directory to the result of fzf: `cd **<tab>`
+- Search command history with fzf: `C-r`
+
 ## Password Manager
 
 [KeepassXC](https://keepassxc.org/) on Ubuntu, soon to be on Mac and Windows
