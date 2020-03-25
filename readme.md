@@ -152,3 +152,21 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ```
 And then edit the dotfiles to move the insertions into the local overrides.
 
+Find files:
+```
+:Files [path]
+```
+Find Git files:
+```
+:GFiles [path]
+```
+Find in buffers:
+```
+:Buffers
+```
+
+To find text in files - [Ripgrep](https://github.com/BurntSushi/ripgrep):
+```
+:Rg [pattern]
+```
+
