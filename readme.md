@@ -113,6 +113,46 @@ Using [tpm](https://github.com/tmux-plugins/tpm)
 <prefix> I
 ```
 
+### Panes in Tmux
+
+#### Split pane horizontally
+```
+<prefix>"
+```
+With mapping:
+```
+<prefix>-
+```
+
+#### Split pane vertically
+```
+<prefix>%
+```
+With mapping:
+```
+<prefix>|
+```
+
+#### Navigate panes (with vim mapping)
+```
+<prefix>h/j/k/l
+```
+
+#### Zoom into or out of a pane
+```
+<prefix> z
+```
+
+#### Convert a pane to a window
+```
+<prefix> !
+```
+
+#### Close the current pane
+```
+<prefix> x
+```
+
 
 ## Vim
 
