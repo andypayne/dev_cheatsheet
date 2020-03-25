@@ -142,6 +142,11 @@ set clipboard=unnamedplus
 Use `"+y` to yank to the system clipboard.
 
 
+### Edit commands
+
+Edit the previous file: `:e#`
+
+
 ### CtrlP and FZF
 
 To get CtrlP fuzzy file open working, I installed fzf from github:
