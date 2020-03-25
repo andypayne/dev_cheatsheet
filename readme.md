@@ -170,3 +170,14 @@ To find text in files - [Ripgrep](https://github.com/BurntSushi/ripgrep):
 :Rg [pattern]
 ```
 
+
+## Find command - Ripgrep
+
+Use [Ripgrep](https://github.com/BurntSushi/ripgrep):
+```zsh
+rg <pattern>
+```
+```zsh
+rg -i <case-insensitive pattern>
+```
+
