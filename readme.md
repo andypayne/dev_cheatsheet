@@ -43,6 +43,24 @@ Now `rcup` can be run without the environment variable set.
 *TODO*
 
 
+## Ubuntu
+
+### Screenhots
+
+[Ubuntu Screenshots and
+Screencasts](https://help.ubuntu.com/stable/ubuntu-help/screen-shot-record.html)
+
+#### To take a screenshot of a window:
+```
+Prt Scrn
+```
+
+#### To take a screenshot of a selectable region:
+```
+Shift + Prt Scrn
+```
+
+
 ## Tmux
 
 - I'm currently running:
