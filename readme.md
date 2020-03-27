@@ -103,6 +103,19 @@ Switch sessions quickly and visually with:
 
 Hold shift and select text to copy from the terminal.
 
+
+### Scroll through the terminal
+Enable scroll mode:
+```
+<prefix> [
+```
+Then use normal navigation (`h/j/k/l`) to navigate.
+Disable with:
+```
+q
+```
+
+
 ### Tmux Plugin Manager
 
 Using [tpm](https://github.com/tmux-plugins/tpm)
