@@ -257,3 +257,8 @@ rg <pattern>
 rg -i <case-insensitive pattern>
 ```
 
+### Show only filenames whose contents match the pattern
+```zsh
+rg -l <pattern>
+```
+
