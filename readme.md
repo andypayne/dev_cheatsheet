@@ -99,7 +99,7 @@ tmux new -s <name>
 ```
 
 ### Kill a session
-0``
+```
 tmux kill-session -t <name>
 ```
 
