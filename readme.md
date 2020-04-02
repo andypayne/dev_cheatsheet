@@ -99,7 +99,7 @@ tmux new -s <name>
 ```
 
 ### Kill a session
-```
+0``
 tmux kill-session -t <name>
 ```
 
@@ -123,7 +123,7 @@ Hold shift and select text to copy from the terminal.
 
 
 ### Scroll through the terminal
-Enable scroll mode:
+Enable scroll/copy mode:
 ```
 <prefix> [
 ```
@@ -131,6 +131,33 @@ Then use normal navigation (`h/j/k/l`) to navigate.
 Disable with:
 ```
 q
+```
+
+### Copy/Paste in panes with tmux buffers
+
+More
+[here](https://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting-ubuntu/), including info on changing key bindings to match vim. (TODO)
+
+1. Enable scroll/copy mode:
+```
+<prefix> [
+```
+
+2. Enter visual select mode:
+```
+<prefix> <space>
+```
+
+3. Navigate to select a region
+
+4. Copy the region:
+```
+<prefix> w
+```
+
+5. Paste the copied text:
+```
+<prefix> ]
 ```
 
 
