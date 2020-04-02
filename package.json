@@ -1,0 +1,29 @@
+{
+  "name": "dev_cheatsheet",
+  "version": "1.0.0",
+  "description": "Reference for my dev environment",
+  "main": " ",
+  "dependencies": {
+    "markdown-toc": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andypayne/dev_cheatsheet.git"
+  },
+  "keywords": [
+    "Vim",
+    "Thoughtbot",
+    "Tmux",
+    "Ripgrep"
+  ],
+  "author": "Andy Payne",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andypayne/dev_cheatsheet/issues"
+  },
+  "homepage": "https://github.com/andypayne/dev_cheatsheet#readme"
+}

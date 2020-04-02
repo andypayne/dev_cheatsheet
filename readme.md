@@ -1,5 +1,44 @@
 # Dev Environment Cheatsheet
 
+* [Dotfiles - Thoughtbot](#dotfiles---thoughtbot)
+  + [Installation of Thoughtbot Dotfiles on Linux](#installation-of-thoughtbot-dotfiles-on-linux)
+* [Console/Shell](#consoleshell)
+  + [fzf](#fzf)
+* [Password Manager](#password-manager)
+* [I3 Window Manager](#i3-window-manager)
+* [Ubuntu](#ubuntu)
+  + [Screenhots](#screenhots)
+    - [To take a screenshot of a window:](#to-take-a-screenshot-of-a-window)
+    - [To take a screenshot of a selectable region:](#to-take-a-screenshot-of-a-selectable-region)
+* [Tmux](#tmux)
+  + [Prefix](#prefix)
+  + [Help, key bindings](#help-key-bindings)
+  + [Resource config files](#resource-config-files)
+  + [New Session with ``](#new-session-with-)
+  + [Rename a session](#rename-a-session)
+  + [Kill a session](#kill-a-session)
+  + [Detach from a session](#detach-from-a-session)
+  + [List sessions](#list-sessions)
+  + [Selecting text](#selecting-text)
+  + [Scroll through the terminal](#scroll-through-the-terminal)
+  + [Copy/Paste in panes with tmux buffers](#copypaste-in-panes-with-tmux-buffers)
+  + [Tmux Plugin Manager](#tmux-plugin-manager)
+    - [Install plugins and refresh](#install-plugins-and-refresh)
+  + [Panes in Tmux](#panes-in-tmux)
+    - [Split pane horizontally](#split-pane-horizontally)
+    - [Split pane vertically](#split-pane-vertically)
+    - [Navigate panes (with vim mapping)](#navigate-panes-with-vim-mapping)
+    - [Zoom into or out of a pane](#zoom-into-or-out-of-a-pane)
+    - [Convert a pane to a window](#convert-a-pane-to-a-window)
+    - [Close the current pane](#close-the-current-pane)
+* [Vim](#vim)
+  + [System clipboard access (linux)](#system-clipboard-access-linux)
+  + [Edit commands](#edit-commands)
+  + [CtrlP and FZF](#ctrlp-and-fzf)
+* [Find command - Ripgrep](#find-command---ripgrep)
+  + [Show only filenames whose contents match the pattern](#show-only-filenames-whose-contents-match-the-pattern)
+
+
 ## Dotfiles - Thoughtbot
 
 I'm using the [Thoughtbot Dotfiles](https://github.com/thoughtbot/dotfiles) with
@@ -288,4 +327,5 @@ rg -i <case-insensitive pattern>
 ```zsh
 rg -l <pattern>
 ```
+
 
