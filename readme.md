@@ -175,7 +175,9 @@ q
 ### Copy/Paste in panes with tmux buffers
 
 More
-[here](https://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting-ubuntu/), including info on changing key bindings to match vim. (TODO)
+[here](https://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting-ubuntu/), including info on changing key bindings to match vim.
+
+#### Default
 
 1. Enable scroll/copy mode:
 ```
@@ -184,7 +186,7 @@ More
 
 2. Enter visual select mode:
 ```
-<prefix> <space>
+<space>
 ```
 
 3. Navigate to select a region
@@ -197,6 +199,30 @@ More
 5. Paste the copied text:
 ```
 <prefix> ]
+```
+
+#### Vim mappings
+
+1. Enable scroll/copy mode:
+```
+<prefix> [
+```
+
+2. Enter visual select mode:
+```
+v
+```
+
+3. Navigate to select a region
+
+4. Copy the region:
+```
+y
+```
+
+5. Paste the copied text:
+```
+<prefix> P
 ```
 
 
