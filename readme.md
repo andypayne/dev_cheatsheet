@@ -42,7 +42,7 @@
 ## Dotfiles - Thoughtbot
 
 I'm using the [Thoughtbot Dotfiles](https://github.com/thoughtbot/dotfiles) with
-a few local overrides (TODO: share dotfiles-local). Thanks to
+a few [local overrides](https://github.com/andypayne/dotfiles-local). Thanks to
 [Greg](https://github.com/glhewett) as usual, for turning me on to Thoughtbot.
 More instructions are on the repo page, as well as the readme for the local
 overrides.
