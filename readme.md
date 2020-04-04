@@ -266,6 +266,17 @@ With mapping:
 <prefix> z
 ```
 
+#### Cycle through zoomed panes
+From [this question](https://superuser.com/questions/772700/switching-tmux-zoom-between-panes-without-zooming-out)
+
+Add this mapping:
+```
+bind -r a select-pane -t .+1 \;  resize-pane -Z
+```
+
+Then cycle through zoomed with `<prefix> a`, `a`, `a`, ...
+
+
 #### Convert a pane to a window
 ```
 <prefix> !
