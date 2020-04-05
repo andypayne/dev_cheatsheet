@@ -40,6 +40,7 @@
   * [CtrlP and FZF](#ctrlp-and-fzf)
 - [Find command - Ripgrep](#find-command---ripgrep)
   * [Show only filenames whose contents match the pattern](#show-only-filenames-whose-contents-match-the-pattern)
+  * [Search only files of a given type with -t (example: python files)](#search-only-files-of-a-given-type-with--t-example-python-files)
 
 <TOC>
 
@@ -367,5 +368,10 @@ rg -i <case-insensitive pattern>
 ### Show only filenames whose contents match the pattern
 ```zsh
 rg -l <pattern>
+```
+
+### Search only files of a given type with -t (example: python files)
+```zsh
+rg -tpy <pattern>
 ```
 
