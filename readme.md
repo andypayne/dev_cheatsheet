@@ -40,8 +40,9 @@
   * [CtrlP and FZF](#ctrlp-and-fzf)
   * [Colortest](#colortest)
 - [Find command - Ripgrep](#find-command---ripgrep)
-  * [Show only filenames whose contents match the pattern](#show-only-filenames-whose-contents-match-the-pattern)
+  * [Show only filenames of files whose contents match the pattern](#show-only-filenames-of-files-whose-contents-match-the-pattern)
   * [Search only files of a given type with -t (example: python files)](#search-only-files-of-a-given-type-with--t-example-python-files)
+  * [Show the filenames of files whose filenames match the pattern (aliased to `rgf`)](#show-the-filenames-of-files-whose-filenames-match-the-pattern-aliased-to-rgf)
 
 <TOC>
 
@@ -373,7 +374,7 @@ rg <pattern>
 rg -i <case-insensitive pattern>
 ```
 
-### Show only filenames whose contents match the pattern
+### Show only filenames of files whose contents match the pattern
 ```zsh
 rg -l <pattern>
 ```
@@ -381,5 +382,10 @@ rg -l <pattern>
 ### Search only files of a given type with -t (example: python files)
 ```zsh
 rg -tpy <pattern>
+```
+
+### Show the filenames of files whose filenames match the pattern (aliased to `rgf`)
+```zsh
+rg --files | rg <pattern>
 ```
 
