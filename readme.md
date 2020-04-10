@@ -38,6 +38,7 @@
   * [System clipboard access (linux)](#system-clipboard-access-linux)
   * [Edit commands](#edit-commands)
   * [CtrlP and FZF](#ctrlp-and-fzf)
+  * [Colortest](#colortest)
 - [Find command - Ripgrep](#find-command---ripgrep)
   * [Show only filenames whose contents match the pattern](#show-only-filenames-whose-contents-match-the-pattern)
   * [Search only files of a given type with -t (example: python files)](#search-only-files-of-a-given-type-with--t-example-python-files)
@@ -352,6 +353,13 @@ Find in buffers:
 To find text in files - [Ripgrep](https://github.com/BurntSushi/ripgrep):
 ```
 :Rg [pattern]
+```
+
+
+### Colortest
+
+```
+:runtime syntax/colortest.vim
 ```
 
 
