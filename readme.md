@@ -10,6 +10,9 @@
   * [Screenhots](#screenhots)
     + [To take a screenshot of a window:](#to-take-a-screenshot-of-a-window)
     + [To take a screenshot of a selectable region:](#to-take-a-screenshot-of-a-selectable-region)
+  * [Display info (external screens etc)](#display-info-external-screens-etc)
+    + [List active monitors](#list-active-monitors)
+    + [Info about all displays](#info-about-all-displays)
 - [Tmux](#tmux)
   * [Prefix](#prefix)
   * [Help, key bindings](#help-key-bindings)
@@ -104,6 +107,21 @@ Prt Scrn
 #### To take a screenshot of a selectable region:
 ```
 Shift + Prt Scrn
+```
+
+### Display info (external screens etc)
+
+#### List active monitors
+```
+xrandr --listactivemonitors
+```
+```
+xrandr --listmonitors
+```
+
+#### Info about all displays
+```
+xrandr
 ```
 
 
