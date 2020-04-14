@@ -20,6 +20,7 @@
   * [New Session with ``](#new-session-with-)
   * [Rename a session](#rename-a-session)
   * [Kill a session](#kill-a-session)
+  * [Kill the current session](#kill-the-current-session)
   * [Detach from a session](#detach-from-a-session)
   * [List sessions](#list-sessions)
   * [Selecting text](#selecting-text)
@@ -169,6 +170,12 @@ tmux new -s <name>
 ```
 tmux kill-session -t <name>
 ```
+
+### Kill the current session
+```
+<prefix> x
+```
+Then confirm.
 
 ### Detach from a session
 ```
