@@ -29,6 +29,9 @@
     + [Vim mappings](#vim-mappings)
   * [Tmux Plugin Manager](#tmux-plugin-manager)
     + [Install plugins and refresh](#install-plugins-and-refresh)
+  * [tmux-continuum and tmux-resurrect](#tmux-continuum-and-tmux-resurrect)
+    + [Save the current tmux session](#save-the-current-tmux-session)
+    + [Restore the last saved tmux session](#restore-the-last-saved-tmux-session)
   * [Panes in Tmux](#panes-in-tmux)
     + [Split pane horizontally](#split-pane-horizontally)
     + [Split pane vertically](#split-pane-vertically)
@@ -260,6 +263,24 @@ Using [tpm](https://github.com/tmux-plugins/tpm)
 ```
 <prefix> I
 ```
+
+
+### tmux-continuum and tmux-resurrect
+
+  I'm using [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect) and [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum) for [saving and restoring tmux sessions](https://andrewjamesjohnson.com/restoring-tmux-sessions/). Sessions are auto-saved every 15 minutes, but sometimes I manually save them.
+
+#### Save the current tmux session
+
+```
+<prefix> C-s
+```
+
+#### Restore the last saved tmux session
+
+```
+<prefix> C-r
+```
+
 
 ### Panes in Tmux
 
