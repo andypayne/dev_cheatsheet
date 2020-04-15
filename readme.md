@@ -51,6 +51,9 @@
   * [Show only filenames of files whose contents match the pattern](#show-only-filenames-of-files-whose-contents-match-the-pattern)
   * [Search only files of a given type with -t (example: python files)](#search-only-files-of-a-given-type-with--t-example-python-files)
   * [Show the filenames of files whose filenames match the pattern (aliased to `rgf`)](#show-the-filenames-of-files-whose-filenames-match-the-pattern-aliased-to-rgf)
+  * [Control over ignore/skip of files](#control-over-ignoreskip-of-files)
+    + [Include all files when searching:](#include-all-files-when-searching)
+    + [Include all files and search filenames:](#include-all-files-and-search-filenames)
 - [Git and GitHub](#git-and-github)
   * [Remotes](#remotes)
     + [Show the remotes for the current project](#show-the-remotes-for-the-current-project)
@@ -459,6 +462,32 @@ rg -tpy <pattern>
 ### Show the filenames of files whose filenames match the pattern (aliased to `rgf`)
 ```zsh
 rg --files | rg <pattern>
+```
+
+
+### Control over ignore/skip of files
+
+By default, ripgrep will ignore binary files, hidden files, and files listed in
+.gitignore files. This behavior can be changed, from the usage:
+
+```
+    -u, --unrestricted
+            Reduce the level of "smart" searching. A single -u won't respect .gitignore
+            (etc.) files. Two -u flags will additionally search hidden files and
+            directories. Three -u flags will additionally search binary files.
+
+            -uu is roughly equivalent to grep -r and -uuu is roughly equivalent to grep -a -r.
+```
+
+
+#### Include all files when searching:
+```zsh
+rg -uuu <pattern>
+```
+
+#### Include all files and search filenames:
+```zsh
+rg -uuu --files | rg -uuu <pattern>
 ```
 
 
