@@ -51,6 +51,11 @@
   * [Show only filenames of files whose contents match the pattern](#show-only-filenames-of-files-whose-contents-match-the-pattern)
   * [Search only files of a given type with -t (example: python files)](#search-only-files-of-a-given-type-with--t-example-python-files)
   * [Show the filenames of files whose filenames match the pattern (aliased to `rgf`)](#show-the-filenames-of-files-whose-filenames-match-the-pattern-aliased-to-rgf)
+- [Git and GitHub](#git-and-github)
+  * [Remotes](#remotes)
+    + [Show the remotes for the current project](#show-the-remotes-for-the-current-project)
+    + [Switch to the ssh remote url](#switch-to-the-ssh-remote-url)
+  * [Cloning over HTTPS or SSH](#cloning-over-https-or-ssh)
 
 <TOC>
 
@@ -455,4 +460,32 @@ rg -tpy <pattern>
 ```zsh
 rg --files | rg <pattern>
 ```
+
+
+## Git and GitHub
+
+### Remotes
+
+#### Show the remotes for the current project
+```
+git remote -v
+```
+
+#### Switch to the ssh remote url
+```
+git remote set-url origin git@github.com:path/to/repo.git
+```
+Ex:
+```
+git remote set-url origin git@github.com:andypayne/dev_cheatsheet.git
+```
+
+### Cloning over HTTPS or SSH
+
+Github now recommmends cloning over HTTPS in their [setup
+guide](https://help.github.com/en/github/getting-started-with-github/set-up-git#next-steps-authenticating-to-github-from-git). No reasons are provided in the guide, but it could be because of the extra key exchange and ssh setup steps.
+
+You can use a credential helper to cache your github credentials when using
+HTTPS, as described in [this
+article](https://help.github.com/en/github/using-git/caching-your-github-password-in-git).
 
