@@ -427,7 +427,8 @@ Then source .vimrc (or exit and return) and run the install command:
 Sometimes I've found that I have to put the full github path in for some
 plugins, as can be seen in the [bundle
 file](https://github.com/andypayne/dotfiles-local/blob/master/vimrc.bundles.local)
-in my local overrides.
+in my local overrides. I also remove some problematic plugins installed by
+Thoughtbot's defaults.
 
 
 ## Find command - Ripgrep
