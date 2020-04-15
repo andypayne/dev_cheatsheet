@@ -46,6 +46,7 @@
   * [Edit commands](#edit-commands)
   * [CtrlP and FZF](#ctrlp-and-fzf)
   * [Colortest](#colortest)
+  * [vim-plug](#vim-plug)
 - [Find command - Ripgrep](#find-command---ripgrep)
   * [Show only filenames of files whose contents match the pattern](#show-only-filenames-of-files-whose-contents-match-the-pattern)
   * [Search only files of a given type with -t (example: python files)](#search-only-files-of-a-given-type-with--t-example-python-files)
@@ -408,6 +409,25 @@ To find text in files - [Ripgrep](https://github.com/BurntSushi/ripgrep):
 ```
 :runtime syntax/colortest.vim
 ```
+
+### vim-plug
+
+Thoughtbot uses [vim-plug](https://github.com/junegunn/vim-plug) as the default
+vim plugin manager. To install a plugin, edit `~/.vimrc.bundles.local` (which
+should symlink to your local overrides, and add an entry for a plugin like this:
+```
+Plug 'maxmellon/vim-jsx-pretty'
+```
+Then source .vimrc (or exit and return) and run the install command:
+```
+:so ~/.vimrc
+:PlugInstall
+```
+
+Sometimes I've found that I have to put the full github path in for some
+plugins, as can be seen in the [bundle
+file](https://github.com/andypayne/dotfiles-local/blob/master/vimrc.bundles.local)
+in my local overrides.
 
 
 ## Find command - Ripgrep
