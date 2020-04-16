@@ -44,6 +44,8 @@
 - [Vim](#vim)
   * [System clipboard access (linux)](#system-clipboard-access-linux)
   * [Edit commands](#edit-commands)
+  * [Searching in Vim](#searching-in-vim)
+    + [Word boundaries](#word-boundaries)
   * [CtrlP and FZF](#ctrlp-and-fzf)
   * [Colortest](#colortest)
   * [vim-plug](#vim-plug)
@@ -381,6 +383,17 @@ Use `"+y` to yank to the system clipboard.
 ### Edit commands
 
 Edit the previous file: `:e#`
+
+
+### Searching in Vim
+
+#### Word boundaries
+
+The word boundary specifiers for vim regex syntax are `\<` and `\>`. To search
+for "the" surrounded by word boundaries:
+```
+/\<the\>
+```
 
 
 ### CtrlP and FZF
