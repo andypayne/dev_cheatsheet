@@ -514,6 +514,9 @@ rg -uuu --files | rg -uuu <pattern>
 ```zsh
 git log -p
 ```
+```zsh
+git log --graph -p --all
+```
 
 #### Show the remotes for the current project
 ```
