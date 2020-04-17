@@ -508,6 +508,13 @@ rg -uuu --files | rg -uuu <pattern>
 
 ### Remotes
 
+### Diffs
+
+#### Show code diffs with logs
+```zsh
+git log -p
+```
+
 #### Show the remotes for the current project
 ```
 git remote -v
