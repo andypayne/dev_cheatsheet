@@ -425,11 +425,18 @@ To find text in files - [Ripgrep](https://github.com/BurntSushi/ripgrep):
 ```
 
 
+### Display full error messages
+```
+:messages
+```
+
+
 ### Colortest
 
 ```
 :runtime syntax/colortest.vim
 ```
+
 
 ### vim-plug
 
