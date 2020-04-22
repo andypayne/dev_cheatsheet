@@ -48,8 +48,10 @@
     + [Word boundaries](#word-boundaries)
   * [CtrlP and FZF](#ctrlp-and-fzf)
   * [Display full error messages](#display-full-error-messages)
+  * [Debugging syntax or plugin issues with syntime](#debugging-syntax-or-plugin-issues-with-syntime)
   * [Colortest](#colortest)
   * [vim-plug](#vim-plug)
+    + [Uninstalling a plugin](#uninstalling-a-plugin)
 - [Find command - Ripgrep](#find-command---ripgrep)
   * [Show only filenames of files whose contents match the pattern](#show-only-filenames-of-files-whose-contents-match-the-pattern)
   * [Search only files of a given type with -t (example: python files)](#search-only-files-of-a-given-type-with--t-example-python-files)
@@ -434,6 +436,20 @@ To find text in files - [Ripgrep](https://github.com/BurntSushi/ripgrep):
 ```
 
 
+### Debugging syntax or plugin issues with syntime
+
+1. Turn syntime on
+```
+:syntime on
+```
+2. Cause a redraw or edit (`C-l` or `:e <file>`)
+
+3. Generate a report.
+```
+:syntime report
+```
+
+
 ### Colortest
 
 ```
@@ -460,6 +476,11 @@ plugins, as can be seen in the [bundle
 file](https://github.com/andypayne/dotfiles-local/blob/master/vimrc.bundles.local)
 in my local overrides. I also remove some problematic plugins installed by
 Thoughtbot's defaults.
+
+#### Uninstalling a plugin
+
+Delete or comment out the `Plug` entry, then reload `.vimrc` or restart, and run
+`:PlugClean`.
 
 
 ## Find command - Ripgrep
