@@ -52,6 +52,7 @@
   * [Colortest](#colortest)
   * [vim-plug](#vim-plug)
     + [Uninstalling a plugin](#uninstalling-a-plugin)
+  * [YouCompleteMe (ycm)](#youcompleteme-ycm)
 - [Find command - Ripgrep](#find-command---ripgrep)
   * [Show only filenames of files whose contents match the pattern](#show-only-filenames-of-files-whose-contents-match-the-pattern)
   * [Search only files of a given type with -t (example: python files)](#search-only-files-of-a-given-type-with--t-example-python-files)
@@ -481,6 +482,16 @@ Thoughtbot's defaults.
 
 Delete or comment out the `Plug` entry, then reload `.vimrc` or restart, and run
 `:PlugClean`.
+
+
+### YouCompleteMe (ycm)
+
+If receiving the error "The ycmd server SHUT DOWN (restart with
+:YcmRestartServer)" on launching vim, you may need to launch the ycm server:
+```zsh
+cd ~/.vim/bundle/YouCompleteMe
+./install.py
+```
 
 
 ## Find command - Ripgrep
