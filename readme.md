@@ -68,6 +68,8 @@
     + [Show the remotes for the current project](#show-the-remotes-for-the-current-project)
     + [Switch to the ssh remote url](#switch-to-the-ssh-remote-url)
   * [Cloning over HTTPS or SSH](#cloning-over-https-or-ssh)
+  * [Getting the abbreviated commit hash for a commit](#getting-the-abbreviated-commit-hash-for-a-commit)
+  * [Reverting the last commit](#reverting-the-last-commit)
 
 <TOC>
 
@@ -593,4 +595,43 @@ guide](https://help.github.com/en/github/getting-started-with-github/set-up-git#
 You can use a credential helper to cache your github credentials when using
 HTTPS, as described in [this
 article](https://help.github.com/en/github/using-git/caching-your-github-password-in-git).
+
+
+### Getting the abbreviated commit hash for a commit
+
+All with relative date, name, and subject:
+```shell
+git log --pretty="%h %ar %an %s"
+```
+
+The last two commits with only the abbreviated hashes:
+```shell
+git log -2 --pretty=%h
+```
+
+
+### Reverting the last commit
+
+Get the last two commits:
+```shell
+git log -2 --pretty=%h
+78dbbb2
+96f95df
+```
+
+Revert to the commit before the last one:
+```shell
+git revert --no-commit 96f95df..HEAD
+```
+
+Combo (untested):
+```shell
+git revert --not-commit `git log -2 --pretty=%h | tail -n 1`..HEAD
+```
+
+Revert and push:
+```shell
+git revert --continue
+git push
+```
 
