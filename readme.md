@@ -50,6 +50,7 @@
   * [Display full error messages](#display-full-error-messages)
   * [Debugging syntax or plugin issues with syntime](#debugging-syntax-or-plugin-issues-with-syntime)
   * [Colortest](#colortest)
+  * [List loaded scripts/plugins](#list-loaded-scriptsplugins)
   * [vim-plug](#vim-plug)
     + [Uninstalling a plugin](#uninstalling-a-plugin)
   * [YouCompleteMe (ycm)](#youcompleteme-ycm)
