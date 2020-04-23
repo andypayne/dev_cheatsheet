@@ -458,6 +458,16 @@ To find text in files - [Ripgrep](https://github.com/BurntSushi/ripgrep):
 ```
 
 
+### List loaded scripts/plugins
+```
+:scriptnames
+```
+To search the loaded scripts
+```
+:filter /pattern/ scriptnames
+```
+
+
 ### vim-plug
 
 Thoughtbot uses [vim-plug](https://github.com/junegunn/vim-plug) as the default
