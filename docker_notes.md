@@ -88,3 +88,18 @@ docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED         STATUS              PORTS               NAMES
 ```
 
+
+## Docker on Mac
+
+### Old notes
+
+Remember to unset/remove env vars that mess with things.
+
+```shell
+docker build -f Dockerfile -t img-name .
+ERRO[0000] failed to dial gRPC: unable to upgrade to h2c, received 502
+context canceled
+```
+
+To address this, enable experimental features in Docker on Mac. This may no longer be necessary.
+
