@@ -60,3 +60,136 @@ const recordElapsedTime = (req, res, next) => {
 app.use(recordElapsedTime);
 ```
 
+
+## Event Emitters
+
+### Direct use
+
+```javascript
+const EventEmitter = require('events');
+
+let ee = new EventEmitter();
+
+ee.on('some-event', () => {
+  console.log('Event handler 1');
+});
+
+ee.on('some-event', () => {
+  console.log('Event handler 2');
+});
+
+ee.on('some-event', (param1) => {
+  console.log('Event handler 3, param1: ', param1);
+});
+
+ee.emit('some-event', 'This is param1');
+```
+
+
+### Inheriting from `EventEmitter`
+
+```javascript
+const EventEmitter = require('events');
+
+class SomeHandler extends EventEmitter {
+  // ...
+}
+
+
+let someHandler = new SomeHandler();
+someHandler.on('handle-event', (param1) => {
+  console.log('On handle-event, param1: ', param1);
+});
+
+someHandler.emit('handle-event', someParam);
+```
+
+
+### Asynchronous use
+
+Wrap the handler in `setImmediate`:
+
+```javascript
+someHandler.on('handle-event', (param1) => {
+  setImmediate(() => console.log('On handle-event async, param1: ', param1));
+});
+```
+
+
+## Worker Threads
+
+For CPU-intensive work, not IO-bound work.
+
+### Separate file or inline eval
+
+```javascript
+const { Worker } = require('worker_threads');
+
+// Instantiate from a file
+const aWorker = new Worker('some_file.js');
+
+// Load directly via eval
+const anotherWorker = new Worker(`
+  console.log('anotherWorker worker thread');
+`, { eval: true });
+```
+
+
+### Instantiate from the same file
+
+```javascript
+const { Worker, isMainThread } = require('worker_threads');
+
+if (isMainThread) {
+  const aWorker = new Worker(__filename);
+  // Do main thread work
+  // ...
+} else {
+  console.log('aWorker worker thread');
+  // ...
+}
+```
+
+
+### Pass data when initializing worker threads
+
+```javascript
+const { Worker, isMainThread, workerData } = require('worker_threads');
+if (isMainThread) {
+  const aWorker = new Worker(__filename, {
+    workerData: {
+      someData: 'Something',
+      moreData: 42,
+    }
+  });
+  // ...
+} else {
+  console.log('aWorker worker thread');
+  console.log('someData: ', workerData.someData);
+  // ...
+}
+```
+
+
+### Communicating between threads
+
+```javascript
+const { Worker, isMainThread, parentPort } = require('worker_threads');
+
+if (isMainThread) {
+  const aWorker = new Worker(__filename);
+
+  aWorker.on('message', (msg) => {
+    console.log('aWorker posted: ', msg);
+  });
+  // ...
+  aWorker.postMessage('Hello from the main thread.');
+} else {
+  parentPort.on('message', (msg) => {
+    console.log('Parent posted: ', msg);
+  });
+  parentPort.postMessage('aWorker starting.');
+  // ...
+  parentPort.postMessage('aWorker completed.');
+}
+```
