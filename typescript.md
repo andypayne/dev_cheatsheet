@@ -132,3 +132,21 @@ let history = useHistory();
 history.push('/path');
 ```
 
+
+#### Use of children
+
+To use `props.children`, you have to declare its type:
+
+```TypeScript
+type Props = {
+  children: React.ReactNode;
+};
+
+export const StyledDiv = (props: Props) => {
+  return (
+    <div style={{ backgroundColor: '#123123' }} >
+      {props.children}
+    </div>
+  );
+}
+```
