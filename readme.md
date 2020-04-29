@@ -160,6 +160,13 @@ xrandr
 
 I map my prefix/leader to `C-a` for easier typing.
 
+### Meta
+
+On Mac, in iTerm2, I edit my session to remap the left alt key as Meta (Esc+),
+more info:
+- https://thinkingeek.com/2012/11/17/mac-os-x-iterm-meta-key/
+- https://www.iterm2.com/faq.html
+
 ### Help, key bindings
 ```
 <prefix> ?
