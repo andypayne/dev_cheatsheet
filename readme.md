@@ -15,6 +15,7 @@
     + [Info about all displays](#info-about-all-displays)
 - [Tmux](#tmux)
   * [Prefix](#prefix)
+  * [Meta](#meta)
   * [Help, key bindings](#help-key-bindings)
   * [Resource config files](#resource-config-files)
   * [New Session with ``](#new-session-with-)
@@ -67,6 +68,7 @@
     + [Show code diffs with logs](#show-code-diffs-with-logs)
     + [Show the remotes for the current project](#show-the-remotes-for-the-current-project)
     + [Switch to the ssh remote url](#switch-to-the-ssh-remote-url)
+    + [Show diffs of staged files](#show-diffs-of-staged-files)
   * [Cloning over HTTPS or SSH](#cloning-over-https-or-ssh)
   * [Getting the abbreviated commit hash for a commit](#getting-the-abbreviated-commit-hash-for-a-commit)
   * [Reverting the last commit](#reverting-the-last-commit)
@@ -592,6 +594,17 @@ git remote set-url origin git@github.com:path/to/repo.git
 Ex:
 ```
 git remote set-url origin git@github.com:andypayne/dev_cheatsheet.git
+```
+
+#### Show diffs of staged files
+
+```
+git diff --cached [filename]
+```
+
+or:
+```
+git diff --staged [filename]
 ```
 
 ### Cloning over HTTPS or SSH
