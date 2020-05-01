@@ -150,3 +150,54 @@ export const StyledDiv = (props: Props) => {
   );
 }
 ```
+
+
+#### Refs
+
+When using refs with `useRef` like this:
+```TypeScript
+const aRef = useRef(null);
+
+// ...
+
+aRef.current.focus();
+```
+
+The compiler will complain that the ref may be null when using it. To correct
+this you must cast the ref, and also check that it's non-null:
+
+```TypeScript
+const aRef = useRef<HTMLInputElement>(null);
+
+// ...
+
+if (aRef.current) {
+  aRef.current.focus();
+}
+```
+
+Be sure to cast to the proper element type. If the ref points to an audio
+element, for example:
+```TypeScript
+const aRef = useRef<HTMLAudioElement>(null);
+
+// ...
+
+if (aRef.current) {
+  aRef.current.play();
+}
+```
+
+
+
+
+### Testing
+
+TypeError: fsevents is not a function
+
+npm install --save-dev fsevents
+
+Error: Cannot find module 'nan'
+
+npm install --save-dev nan
+
