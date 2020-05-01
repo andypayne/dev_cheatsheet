@@ -203,5 +203,5 @@ Error: Cannot find module 'nan'
 
 ```shell
 npm install --save-dev nan
-```shell
+```
 
