@@ -195,9 +195,13 @@ if (aRef.current) {
 
 TypeError: fsevents is not a function
 
+```shell
 npm install --save-dev fsevents
+```
 
 Error: Cannot find module 'nan'
 
+```shell
 npm install --save-dev nan
+```shell
 
