@@ -193,3 +193,25 @@ if (isMainThread) {
   parentPort.postMessage('aWorker completed.');
 }
 ```
+
+
+## Modules
+
+
+### Exporting groups of constants that build on each other
+
+Sometimes it's useful to export some values that reference each other, for
+example components of URLs. Components like prototypes and hostnames can be
+defined, and then those can be used to build multiple URLs. This can be done
+with `Object.freeze` and defining accessors with `get`:
+
+```javascript
+module.exports = Object.freeze({
+  PROTO:       'https',
+  HOST:        'example.com',
+  PARAM:       'foo',
+  get URL1()   { return `${this.PROTO}://${this.HOST}/path/to/something` },
+  get URL2()   { return `${this.PROTO}://${this.HOST}/another/path/?param=${PARAM}` },
+});
+```
+
