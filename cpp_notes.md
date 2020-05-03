@@ -42,12 +42,46 @@ SUMMARY: AddressSanitizer: 40 byte(s) leaked in 1 allocation(s).
 
 ## Testing with Googletest
 
-Some of this is from this [Intro to Google Test and CMake](https://www.youtube.com/watch?v=Lp1ifh9TuFI).
+References:
+- [Googletest Primer](https://github.com/google/googletest/blob/master/googletest/docs/primer.md)
+- [Intro to Google Test and CMake](https://www.youtube.com/watch?v=Lp1ifh9TuFI)
+
 
 ### Assertions
 
-- `EXPECT_TRUE(<expr>)` - Test `<expr>` and report pass/fail
+A subset:
+- `EXPECT_TRUE(<expr>)` - Test `<expr>` and report pass/fail.
 - `ASSERT_TRUE(<expr>)` - Test `<expr>` and report pass/fail, stopping the tests if it fails.
+- `EXPECT_EQ(<expr1>, <expr2>)` - Test whether `<expr1>` and `<expr2>` are equal.
+- `EXPECT_NE(<expr1>, <expr2>)` - Test whether `<expr1>` and `<expr2>` differ.
+- `EXPECT_STREQ(s1, s2)` - Test whether two C strings have the same content.
+...
+
+To provide a custom failure message, stream it into the macro:
+```cpp
+EXPECT_EQ(x, y) << "x and y should be the same";
+```
+
+To use the comparison expects/assertions (`EXPECT_EQ`, `ASSERT_EQ`, etc) with a custom type, define the necessary comparison operator(s) (`==` or `<`).
+
+
+### Test Fixtures
+
+A fixture class to test class `Foo` should be named `FooTest` and should inherit
+from `::testing::Test`, with protected access. Use `SetUp` to initialize (use
+`override` to be sure it's not misspelled):
+```cpp
+class FooTest : public ::testing::Test {
+  protected:
+    void SetUp() override {
+      x = 123;
+      y = 456;
+    }
+
+    int x;
+    int y;
+};
+```
 
 
 ### Setup the project:
