@@ -46,8 +46,8 @@ Some of this is from this [Intro to Google Test and CMake](https://www.youtube.c
 
 ### Assertions
 
-- `EXPECT_TRUE(<expression>)` - Test `<expression>` and report pass/fail
-- `ASSERT_TRUE(<expression>)` - Test `<expression>` and report pass/fail, stopping the tests if it fails.
+- `EXPECT_TRUE(<expr>)` - Test `<expr>` and report pass/fail
+- `ASSERT_TRUE(<expr>)` - Test `<expr>` and report pass/fail, stopping the tests if it fails.
 
 
 ### Setup the project:
@@ -58,7 +58,7 @@ cd example
 git clone https://github.com/google/googletest.git
 ```
 
-Edit CMakeLists.txt, example:
+Edit `CMakeLists.txt`, example:
 ```
 cmake_minimum_required (VERSION 3.10)
 set(This example)
@@ -94,7 +94,7 @@ mkdir test
 touch example_tests.cpp
 ```
 
-Add a `CMakeLists.txt` file to tests:
+Add a `test/CMakeLists.txt` file:
 ```
 cmake_minimum_required (VERSION 3.10)
 set(This example_tests)
@@ -140,7 +140,7 @@ make
 
 ### Run tests
 
-Run an empty test (from the `build` dir):
+Run an empty test (from the `build/` dir):
 ```shell
 ./test/example_tests
 
