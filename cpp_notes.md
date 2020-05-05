@@ -55,6 +55,7 @@ A subset:
 - `EXPECT_EQ(<expr1>, <expr2>)` - Test whether `<expr1>` and `<expr2>` are equal.
 - `EXPECT_NE(<expr1>, <expr2>)` - Test whether `<expr1>` and `<expr2>` differ.
 - `EXPECT_STREQ(s1, s2)` - Test whether two C strings have the same content.
+- `EXPECT_FLOAT_EQ(<expr1>, <expr2>)` - Test whether `<expr1>` and `<expr2>` are equal using floating point comparison.
 ...
 
 To provide a custom failure message, stream it into the macro:
@@ -178,7 +179,7 @@ Run an empty test (from the `build/` dir):
 ```shell
 ./test/example_tests
 
-Running main() from /home/andy/Documents/src/olio/cpp/example/googletest/googletest/src/gtest_main.cc
+Running main() from /home/andy/src/example/googletest/googletest/src/gtest_main.cc
 [==========] Running 0 tests from 0 test suites.
 [==========] 0 tests from 0 test suites ran. (0 ms total)
 [  PASSED  ] 0 tests.
@@ -203,7 +204,7 @@ Run the tests again:
 ```shell
 ./test/example_tests
 
-Running main() from /home/andy/Documents/src/olio/cpp/example/googletest/googletest/src/gtest_main.cc
+Running main() from /home/andy/src/example/googletest/googletest/src/gtest_main.cc
 [==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from example_tests
@@ -221,7 +222,7 @@ Or:
 make test
 
 Running tests...
-Test project /home/andy/Documents/src/olio/cpp/example/build
+Test project /home/andy/src/example/build
     Start 1: example_tests
 1/1 Test #1: example_tests ....................   Passed    0.00 sec
 
