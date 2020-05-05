@@ -42,6 +42,7 @@
     + [Cycle through zoomed panes](#cycle-through-zoomed-panes)
     + [Convert a pane to a window](#convert-a-pane-to-a-window)
     + [Close the current pane](#close-the-current-pane)
+    + [Move/swap the current pane](#moveswap-the-current-pane)
 - [Vim](#vim)
   * [System clipboard access (linux)](#system-clipboard-access-linux)
   * [Edit commands](#edit-commands)
@@ -367,6 +368,18 @@ Then cycle through zoomed with `<prefix> a`, `a`, `a`, ...
 #### Close the current pane
 ```
 <prefix> x
+```
+
+#### Move/swap the current pane
+
+Move the current pane left:
+```
+<prefix> {
+```
+
+Move the current pane right:
+```
+<prefix> }
 ```
 
 
