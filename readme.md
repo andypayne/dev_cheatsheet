@@ -13,6 +13,7 @@
   * [Display info (external screens etc)](#display-info-external-screens-etc)
     + [List active monitors](#list-active-monitors)
     + [Info about all displays](#info-about-all-displays)
+  * [Processing units](#processing-units)
 - [Tmux](#tmux)
   * [Prefix](#prefix)
   * [Meta](#meta)
@@ -136,6 +137,7 @@ Prt Scrn
 Shift + Prt Scrn
 ```
 
+
 ### Display info (external screens etc)
 
 #### List active monitors
@@ -150,6 +152,18 @@ xrandr --listmonitors
 ```
 xrandr
 ```
+
+
+### Processing units
+
+When determining how many parallel jobs to pass to `make -j`, use `nproc`:
+```shell
+nproc
+
+12
+```
+
+You can use `make -j$(nproc)` but I'm sparing a few by using `make -j8`.
 
 
 ## Tmux
