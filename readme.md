@@ -35,6 +35,7 @@
   * [tmux-continuum and tmux-resurrect](#tmux-continuum-and-tmux-resurrect)
     + [Save the current tmux session](#save-the-current-tmux-session)
     + [Restore the last saved tmux session](#restore-the-last-saved-tmux-session)
+    + [Restore alias](#restore-alias)
   * [Panes in Tmux](#panes-in-tmux)
     + [Split pane horizontally](#split-pane-horizontally)
     + [Split pane vertically](#split-pane-vertically)
@@ -330,6 +331,25 @@ Using [tpm](https://github.com/tmux-plugins/tpm)
 
 ```
 <prefix> C-r
+```
+
+#### Restore alias
+
+To avoid extra steps starting tmux and then restoring, I use an alias to
+automate it. This is from this [issue filed on tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect/issues/139).
+
+```shell
+alias mux='pgrep -vx tmux > /dev/null && \
+           tmux new -d -s delete-me && \
+           tmux run-shell $TMUX_DIR/plugins/tmux-resurrect/scripts/restore.sh && \
+           tmux kill-session -t delete-me && \
+           tmux attach || tmux attach'
+```
+
+Note that this relies on setting `$TMUX_DIR`, which I do in `~/dotfiles-local/zshrc.local`:
+
+```shell
+TMUX_DIR=$HOME/.tmux
 ```
 
 
