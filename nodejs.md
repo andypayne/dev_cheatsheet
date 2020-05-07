@@ -211,7 +211,7 @@ module.exports = Object.freeze({
   HOST:        'example.com',
   PARAM:       'foo',
   get URL1()   { return `${this.PROTO}://${this.HOST}/path/to/something` },
-  get URL2()   { return `${this.PROTO}://${this.HOST}/another/path/?param=${PARAM}` },
+  get URL2()   { return `${this.PROTO}://${this.HOST}/another/path/?param=${this.PARAM}` },
 });
 ```
 
