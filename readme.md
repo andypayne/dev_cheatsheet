@@ -7,7 +7,7 @@
 - [Password Manager](#password-manager)
 - [I3 Window Manager](#i3-window-manager)
 - [Ubuntu](#ubuntu)
-  * [Screenhots](#screenhots)
+  * [Screenshots](#screenshots)
     + [To take a screenshot of a window:](#to-take-a-screenshot-of-a-window)
     + [To take a screenshot of a selectable region:](#to-take-a-screenshot-of-a-selectable-region)
   * [Display info (external screens etc)](#display-info-external-screens-etc)
@@ -123,7 +123,7 @@ Now `rcup` can be run without the environment variable set.
 
 ## Ubuntu
 
-### Screenhots
+### Screenshots
 
 [Ubuntu Screenshots and
 Screencasts](https://help.ubuntu.com/stable/ubuntu-help/screen-shot-record.html)
