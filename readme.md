@@ -10,6 +10,7 @@
   * [Screenshots](#screenshots)
     + [To take a screenshot of a window:](#to-take-a-screenshot-of-a-window)
     + [To take a screenshot of a selectable region:](#to-take-a-screenshot-of-a-selectable-region)
+  * [Screen recordings](#screen-recordings)
   * [Display info (external screens etc)](#display-info-external-screens-etc)
     + [List active monitors](#list-active-monitors)
     + [Info about all displays](#info-about-all-displays)
@@ -137,6 +138,12 @@ Prt Scrn
 ```
 Shift + Prt Scrn
 ```
+
+
+### Screen recordings
+
+To record the screen I'm using [Peek](https://github.com/phw/peek). It has a
+draggable region and options for saving as a gif, webm, or mp4.
 
 
 ### Display info (external screens etc)
