@@ -93,6 +93,8 @@ cd build
 - Note the python 3 flags, which are required to use python 3 instead of python 2.
 - No `ENABLE_FAST_MATH` or `CUDA_FAST_MATH` - [no IEEE compliance](https://answers.opencv.org/question/222056/fast-math-flags-enable_fast_math-and-cuda_fast_math/)
 - No `WITH_CSTRIPES`
+- Use the deprecated option `OPENCV_GENERATE_PKGCONFIG=YES` to generate a
+  `opencv4.pc` file to be used with `pkg-config`, which many makefiles still use.
 
 My cmake script is here: [`opencv_cmake.sh`](opencv_cmake.sh). And inline:
 
@@ -101,6 +103,7 @@ cmake \
   -D CMAKE_BUILD_TYPE=RELEASE \
   -D CMAKE_INSTALL_PREFIX=/usr/local \
   -D WITH_TBB=ON \
+  -D OPENCV_GENERATE_PKGCONFIG=YES \
   -D WITH_OPENMP=ON \
   -D WITH_IPP=ON \
   -D WITH_NVCUVID=ON \
@@ -285,5 +288,28 @@ If successful:
 opencv_version
 
 4.3.0
+```
+
+
+### `pkg-config`
+
+Some libraries I'm using use
+[`pkg-config`](https://www.freedesktop.org/wiki/Software/pkg-config/) to find
+installed libraries. OpenCV has [dropped support](https://github.com/opencv/opencv/issues/13154#issuecomment-438473073)
+for `pkg-config`, so it's deprecated in the default install. I added a flag to
+generate it and rebuilt. An alternative for libraries under your control is to
+use CMake's `find_package(OpenCV)`. I'm working with
+[Darknet](https://pjreddie.com/darknet/) which uses bare makefiles by default,
+so it requires `pkg-config`.
+
+Incidentally, Darknet also references `opencv`, not `opencv4`, which is the
+default installed by OpenCV-4.3.0. So I duplicated `opencv4.pc` as `opencv.pc`.
+
+After building OpenCV (also add `PKG_CONFIG_PATH` to dotfiles):
+```shell
+mkdir /usr/local/lib/pkgconfig
+cp unix-install/opencv4.pc /usr/local/lib/pkgconfig
+cp unix-install/opencv4.pc /usr/local/lib/pkgconfig/opencv.pc
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 ```
 
