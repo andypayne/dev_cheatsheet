@@ -215,3 +215,14 @@ module.exports = Object.freeze({
 });
 ```
 
+
+## `npm`/`fsevents` error
+
+Error: `Unsupported platform for fsevents`
+
+`fsevents` is a darwin-specific lib. To get around this, install with the force
+flag:
+```shell
+npm i -f
+```
+
