@@ -15,6 +15,7 @@
       - [List active monitors](#list-active-monitors)
       - [Info about all displays](#info-about-all-displays)
     + [Processing units](#processing-units)
+    + [Network services](#network-services)
   * [Tmux](#tmux)
     + [Prefix](#prefix)
     + [Meta](#meta)
@@ -173,6 +174,14 @@ nproc
 ```
 
 You can use `make -j$(nproc)` but I'm sparing a few by using `make -j8`.
+
+
+### Network services
+
+To see info on all running services that are listening on the network:
+```shell
+ss -atpu
+```
 
 
 ## Tmux
