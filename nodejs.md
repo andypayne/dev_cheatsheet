@@ -226,3 +226,36 @@ flag:
 npm i -f
 ```
 
+
+## `npm audit`
+
+It's annoying that `npm audit` doesn't have an option for only displaying high or critical vulnerabilities. It does have an option for failing the audit if a given level of vulnerability is found, but it happily returns all the issues found. That's not useful for triage.
+
+For example:
+```shell
+npm audit --audit-level=critical
+
+found 907 vulnerabilities (888 low, 18 moderate, 1 high) in 1866 scanned packages
+  run `npm audit fix` to fix 592 of them.
+  315 vulnerabilities require manual review. See the full report for details.
+```
+
+To display only high and critical vulnerabilities:
+```shell
+npm audit | grep -E "(High | Critical)" -B3 -A10
+
+# Run  npm update http-proxy --depth 4  to resolve 1 vulnerability
+┌───────────────┬──────────────────────────────────────────────────────────────┐
+│ High          │ Denial of Service                                            │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Package       │ http-proxy                                                   │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Dependency of │ react-scripts                                                │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Path          │ react-scripts > webpack-dev-server > http-proxy-middleware > │
+│               │ http-proxy                                                   │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ More info     │ https://npmjs.com/advisories/1486                            │
+└───────────────┴──────────────────────────────────────────────────────────────┘
+```
+
