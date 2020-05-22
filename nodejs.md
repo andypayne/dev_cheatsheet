@@ -259,3 +259,16 @@ npm audit | grep -E "(High | Critical)" -B3 -A10
 └───────────────┴──────────────────────────────────────────────────────────────┘
 ```
 
+
+## Jest
+
+To [troubleshoot jest](https://jestjs.io/docs/en/troubleshooting):
+
+```shell
+node --inspect-brk node_modules/.bin/jest --runInBand
+```
+
+Then open Chrome/Chromium, enter `chrome://inspect`, and click `Open Dedicated
+DevTools for Node`. Then resume the debugger, which is automatically paused at a
+breakpoint.
+
