@@ -50,6 +50,9 @@
 - [Vim](#vim)
   * [System clipboard access (linux)](#system-clipboard-access-linux)
   * [Edit commands](#edit-commands)
+  * [Macros](#macros)
+    + [Record a macro to surround a word in double quotes](#record-a-macro-to-surround-a-word-in-double-quotes)
+  * [List registers](#list-registers)
   * [Change inner word](#change-inner-word)
   * [Searching in Vim](#searching-in-vim)
     + [Word boundaries](#word-boundaries)
@@ -471,11 +474,41 @@ Use `"+y` to yank to the system clipboard.
 Edit the previous file: `:e#`
 
 
+### Macros
+
+#### Record a macro to surround a word in double quotes
+
+Yes, this can be done with [surround.vim](https://github.com/tpope/vim-surround) instead.
+
+1. Press `q` and a `<register>` to record into to begin recording, for example: `qa`
+2. Press `viwo<Esc>` to go to the beginning of the current word, if not already there. Using `wb` will work, except where the word is at the end of a file.
+3. Press `i` to insert and type a quote `"` (or single quote or other surround character you want to use) and then `<Esc>` to leave insert mode.
+4. Press `e` to move to the end of the word.
+5. Press `a`to append and type a quote `"` again, then `<Esc>`.
+6. Press `q` to write to the register.
+
+To use, move the cursor within a word, and press `@<register>`, for example: `@a`.
+To repeat the last macro, use `@@`.
+
+
+### List registers
+
+To list registers, including copied text and recorded macros:
+```
+:registers
+```
+
+
 ### Change inner word
 
 To change the word the cursor is within (vs `cw`):
 ```
 ciw
+```
+
+To change the word the cursor is within including the following space:
+```
+caw
 ```
 
 
