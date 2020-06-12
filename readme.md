@@ -50,6 +50,7 @@
 - [Vim](#vim)
   * [System clipboard access (linux)](#system-clipboard-access-linux)
   * [Edit commands](#edit-commands)
+  * [Change inner word](#change-inner-word)
   * [Searching in Vim](#searching-in-vim)
     + [Word boundaries](#word-boundaries)
   * [CtrlP and FZF](#ctrlp-and-fzf)
@@ -80,6 +81,7 @@
   * [Forks](#forks)
   * [Submodules](#submodules)
 - [`pkg-config` notes](#pkg-config-notes)
+- [Delete empty directories](#delete-empty-directories)
 
 <TOC>
 
@@ -469,6 +471,14 @@ Use `"+y` to yank to the system clipboard.
 Edit the previous file: `:e#`
 
 
+### Change inner word
+
+To change the word the cursor is within (vs `cw`):
+```
+ciw
+```
+
+
 ### Searching in Vim
 
 #### Word boundaries
@@ -772,5 +782,12 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 pkg-config --exists --print-errors opencv4
 echo $?
 0
+```
+
+## Delete empty directories
+
+Using find to delete empty directories from `base/path`:
+```shell
+find base/path -type d -empty -delete
 ```
 
