@@ -85,6 +85,7 @@
   * [Submodules](#submodules)
 - [`pkg-config` notes](#pkg-config-notes)
 - [Delete empty directories](#delete-empty-directories)
+- [Hex dumps](#hex-dumps)
 
 <TOC>
 
@@ -817,10 +818,20 @@ echo $?
 0
 ```
 
+
 ## Delete empty directories
 
 Using find to delete empty directories from `base/path`:
 ```shell
 find base/path -type d -empty -delete
+```
+
+
+## Hex dumps
+
+The `xxd` command can be used to do hex dumps:
+```shell
+echo "foobar" | xxd
+00000000: 666f 6f62 6172 0a                        foobar.
 ```
 
