@@ -475,6 +475,29 @@ Use `"+y` to yank to the system clipboard.
 Edit the previous file: `:e#`
 
 
+### Leader key
+
+To show your leader key:
+```
+:echo mapleader
+```
+or
+```
+:let mapleader
+```
+
+If it's the space key, it might show up as empty. To see this more explicitly,
+run:
+```
+:nmap showleader :echo('leader key is "<Leader>"')<Esc>| exec 'norm showleader'|
+nun showleader
+```
+When using space as the leader it prints:
+```
+leader key is " "
+```
+
+
 ### Macros
 
 #### Record a macro to surround a word in double quotes
