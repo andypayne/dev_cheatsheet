@@ -50,6 +50,8 @@
 - [Vim](#vim)
   * [System clipboard access (linux)](#system-clipboard-access-linux)
   * [Edit commands](#edit-commands)
+  * [Leader key](#leader-key)
+  * [Go to definition/file/etc](#go-to-definitionfileetc)
   * [Macros](#macros)
     + [Record a macro to surround a word in double quotes](#record-a-macro-to-surround-a-word-in-double-quotes)
   * [List registers](#list-registers)
@@ -496,6 +498,16 @@ When using space as the leader it prints:
 ```
 leader key is " "
 ```
+
+
+### Go to definition/file/etc
+
+For a keyword under the cursor:
+- `gd` for the local definition
+- `gD` for the global definition
+- `g*` and `g#` to search forward/backward
+- `gf` to open the file under the cursor
+- `g]` to jump to a tag definition
 
 
 ### Macros
