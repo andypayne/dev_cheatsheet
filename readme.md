@@ -56,6 +56,7 @@
     + [Record a macro to surround a word in double quotes](#record-a-macro-to-surround-a-word-in-double-quotes)
   * [List registers](#list-registers)
   * [Change inner word](#change-inner-word)
+  * [Ex mode substitutions](#ex-mode-substitutions)
   * [Searching in Vim](#searching-in-vim)
     + [Word boundaries](#word-boundaries)
   * [CtrlP and FZF](#ctrlp-and-fzf)
@@ -549,6 +550,21 @@ caw
 ```
 
 
+### Ex mode substitutions
+
+Some substitutions for ex mode:
+- `%` = the current filename
+  ```
+  :!file %
+  readme.md: ASCII text, with very long lines
+
+  Press ENTER or type command to continue
+  ```
+- `<cword>` = sub the current word under the cursor
+
+For more: `:help cmdline-special`
+
+
 ### Searching in Vim
 
 #### Word boundaries
@@ -673,7 +689,7 @@ Some commands:
 - `:Git blame` or `:Gblame` for blame
 - `:Git mergetool` and `:Git difftool` to load diffs into quickfix
 - `:Ggrep` and `:Glgrep`
-
+- `:Git add %` to stage the current file
 
 ## Find command - Ripgrep
 
