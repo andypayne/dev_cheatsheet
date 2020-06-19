@@ -66,6 +66,7 @@
   * [vim-plug](#vim-plug)
     + [Uninstalling a plugin](#uninstalling-a-plugin)
   * [YouCompleteMe (ycm)](#youcompleteme-ycm)
+  * [Fugitive for Git](#fugitive-for-git)
 - [Find command - Ripgrep](#find-command---ripgrep)
   * [Show only filenames of files whose contents match the pattern](#show-only-filenames-of-files-whose-contents-match-the-pattern)
   * [Search only files of a given type with -t (example: python files)](#search-only-files-of-a-given-type-with--t-example-python-files)
@@ -659,6 +660,19 @@ If receiving the error "The ycmd server SHUT DOWN (restart with
 cd ~/.vim/bundle/YouCompleteMe
 ./install.py
 ```
+
+
+### Fugitive for Git
+
+[fugitive.vim](https://github.com/tpope/vim-fugitive) is a git integration for
+vim.
+
+Some commands:
+- `:Git` for a summary/status
+- `:Git diff` or `:Gdiff`
+- `:Git blame` or `:Gblame` for blame
+- `:Git mergetool` and `:Git difftool` to load diffs into quickfix
+- `:Ggrep` and `:Glgrep`
 
 
 ## Find command - Ripgrep
