@@ -5,8 +5,9 @@
 - [Console/Shell](#consoleshell)
   * [fzf](#fzf)
 - [Password Manager](#password-manager)
-- [I3 Window Manager](#i3-window-manager)
+- [Regolith - Tiling I3-based Window Manager](#regolith---tiling-i3-based-window-manager)
 - [Ubuntu](#ubuntu)
+  * [Navigation](#navigation)
   * [Screenshots](#screenshots)
     + [To take a screenshot of a window:](#to-take-a-screenshot-of-a-window)
     + [To take a screenshot of a selectable region:](#to-take-a-screenshot-of-a-selectable-region)
@@ -132,12 +133,43 @@ Now `rcup` can be run without the environment variable set.
 (when needed)
 
 
-## I3 Window Manager
+## Regolith - Tiling I3-based Window Manager
 
-*TODO*
+[Regolith Linux](https://regolith-linux.org/) has both a standalone distro and a
+window manager that can be installed on an existing Ubuntu installation. The
+latter is what I'm using.
+
+To install on Ubuntu:
+```shell
+sudo add-apt-repository ppa:regolith-linux/release
+sudo apt update
+sudo apt install regolith-desktop i3xrocks-net-traffic i3xrocks-cpu-usage i3xrocks-time
+```
+
+Then logout or restart. When logging in with gdm, select the gear icon and
+choose Regolith.
+
+Common Keys:
+- `Super` is the window key on my laptop
+- `Super+Shift+?` - open the shortcut/launcher app
+- `Super+Enter` - terminal
+- `Super+Shift+Enter` - browser
+- `Super+Space` - launch an app
+- `Super+Shift+q` - quit an app
+- `Super+c` - settings
+- `Super+1,2,...` - activate the numbered workspace
+- `Super+f` - toggle fullscreen for the active window
+- `Super+arrows` - navigate through tiled apps in a workspace
+- `Super+Tab` - cycle through apps (instead of `Alt+Tab`)
 
 
 ## Ubuntu
+
+### Navigation
+
+- `Super+arrows` - pin a window to the left or right or maximize it
+- `Super+h` - hide (minimize) a window
+
 
 ### Screenshots
 
