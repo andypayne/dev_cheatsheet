@@ -122,6 +122,64 @@ For more examples and ideas, visit:
 ```
 
 
+## Build/Run
+
+Here's a simple example Dockerfile for Alpine Linux for Go:
+
+```
+FROM golang:alpine
+RUN apk add --no-cache git
+```
+
+To build:
+```shell
+docker build .
+```
+
+Then the image should be listed:
+```shell
+docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED        SIZE
+golang              alpine              3289bf11c284        2 weeks ago    370MB
+hello-world         latest              bf756fb1ae65        5 months ago   13.3kB
+...
+```
+
+Then run:
+```shell
+docker run -it 3289bf11c284
+```
+
+And you should get a shell.
+```shell
+/go # which git
+/usr/bin/git
+```
+
+Another example Dockerfile that sets up a user and project location:
+```
+FROM golang:alpine
+
+# Install git for go dependencies
+RUN apk add --no-cache git
+
+ENV user andy
+ENV proj_path /gomicro/
+
+# Run as non-root
+RUN adduser -D -u 10000 $user
+RUN mkdir $proj_path && chown $user $proj_path
+USER $user
+
+WORKDIR $proj_path
+ADD . $proj_path
+```
+
+```shell
+docker build -f ./Dockerfile -t alpine-proj .
+```
+
+
 ## Docker on Mac
 
 ### Old notes

@@ -56,6 +56,7 @@
     + [Record a macro to surround a word in double quotes](#record-a-macro-to-surround-a-word-in-double-quotes)
   * [List registers](#list-registers)
   * [Change inner word](#change-inner-word)
+  * [Changes](#changes)
   * [Ex mode substitutions](#ex-mode-substitutions)
   * [Searching in Vim](#searching-in-vim)
     + [Word boundaries](#word-boundaries)
@@ -548,6 +549,18 @@ To change the word the cursor is within including the following space:
 ```
 caw
 ```
+
+
+### Changes
+
+List the changes for the current buffer:
+```
+:changes
+```
+
+Navigate changes:
+- `g;` to navigate to the position of the previous change
+- `g,` to navigate to the position of the next change
 
 
 ### Ex mode substitutions
