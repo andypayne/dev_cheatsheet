@@ -180,6 +180,80 @@ docker build -f ./Dockerfile -t alpine-proj .
 ```
 
 
+## Networking
+
+If the Dockerfile exposes a port, for example:
+```
+ENV port=8080
+...
+EXPOSE $port
+```
+
+Then by default the service will listen on the `bridge` network. To see the
+networks:
+```shell
+docker network ls
+
+NETWORK ID          NAME                DRIVER              SCOPE
+1046046eb833        bridge              bridge              local
+e236b58c33ac        host                host                local
+04c75d4451f1        none                null                local
+```
+
+To see the IP addresses and containers connected to the network:
+```shell
+docker network inspect bridge
+
+[
+    {
+        "Name": "bridge",
+        "Id": "2042047ebf33a207279b01cb2d043ea214ca637d17cf1f4d7585054ba1576023",
+        "Created": "2020-06-23T08:01:54.40621988-07:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.17.0.0/16",
+                    "Gateway": "172.17.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "772d0a3cec5b8f2cc06d719af9c2e34c1a9fe946fa3b611384a0b02c3a30e093": {
+                "Name": "practical_leavitt",
+                "EndpointID": "89c9353f7cdc8966d54415faeb5370347a11bbcc0cf6cb5fdfd3732f061060f5",
+                "MacAddress": "03:24:ad:11:01:17",
+                "IPv4Address": "172.17.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.bridge.default_bridge": "true",
+            "com.docker.network.bridge.enable_icc": "true",
+            "com.docker.network.bridge.enable_ip_masquerade": "true",
+            "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+            "com.docker.network.bridge.name": "docker0",
+            "com.docker.network.driver.mtu": "1500"
+        },
+        "Labels": {}
+    }
+]
+```
+
+This shows that the host container will be listening on `172.17.0.2:8080`.
+
+
 ## Docker on Mac
 
 ### Old notes
