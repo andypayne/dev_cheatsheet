@@ -70,6 +70,7 @@
     + [Uninstalling a plugin](#uninstalling-a-plugin)
   * [YouCompleteMe (ycm)](#youcompleteme-ycm)
   * [Fugitive for Git](#fugitive-for-git)
+  * [NERDTree file navigator](#nerdtree-file-navigator)
 - [Find command - Ripgrep](#find-command---ripgrep)
   * [Show only filenames of files whose contents match the pattern](#show-only-filenames-of-files-whose-contents-match-the-pattern)
   * [Search only files of a given type with -t (example: python files)](#search-only-files-of-a-given-type-with--t-example-python-files)
@@ -735,6 +736,24 @@ Some commands:
 - `:Git mergetool` and `:Git difftool` to load diffs into quickfix
 - `:Ggrep` and `:Glgrep`
 - `:Git add %` to stage the current file
+
+
+### NERDTree file navigator
+
+| Key/Command | Effect |
+| ----------- | ------ |
+| `:NERDTree` | open NERDTree |
+| `o` or `Enter` | open a file or expand a directory |
+| `C-arrows`  | navigate between NERDTree and an open file |
+| `m`         | open the file menu, which allows creating and deleting files and directories |
+| `B`         | open bookmarks |
+| `:q`        | close NERDTree |
+
+I map `<leader>ne` to open NERDTree:
+```
+nmap <leader>ne :NERDTree<cr>
+```
+
 
 ## Find command - Ripgrep
 
