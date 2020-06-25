@@ -730,12 +730,14 @@ cd ~/.vim/bundle/YouCompleteMe
 vim.
 
 Some commands:
-- `:Git` for a summary/status
-- `:Git diff` or `:Gdiff`
-- `:Git blame` or `:Gblame` for blame
-- `:Git mergetool` and `:Git difftool` to load diffs into quickfix
-- `:Ggrep` and `:Glgrep`
-- `:Git add %` to stage the current file
+| Key/Command | Effect |
+| ----------- | ------ |
+| `:Git` | summary/status |
+| `:Git diff` or `:Gdiff` | Show diffs |
+| `:Git blame` or `:Gblame` | Show blame |
+| `:Git mergetool` & `:Git difftool` | Load diffs into quickfix |
+| `:Ggrep` and `:Glgrep` | Git grep |
+| `:Git add %` | stage the current file |
 
 
 ### NERDTree file navigator
