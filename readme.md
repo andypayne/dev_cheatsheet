@@ -68,6 +68,7 @@
   * [List loaded scripts/plugins](#list-loaded-scriptsplugins)
   * [vim-plug](#vim-plug)
     + [Uninstalling a plugin](#uninstalling-a-plugin)
+  * [Surround](#surround)
   * [YouCompleteMe (ycm)](#youcompleteme-ycm)
   * [Fugitive for Git](#fugitive-for-git)
   * [NERDTree file navigator](#nerdtree-file-navigator)
@@ -712,6 +713,15 @@ Thoughtbot's defaults.
 
 Delete or comment out the `Plug` entry, then reload `.vimrc` or restart, and run
 `:PlugClean`.
+
+
+### Surround
+
+Some examples:
+| Key/Command | Effect |
+| ----------- | ------ |
+| `cs"'` | Change a surround from "double" to 'single' |
+| `cs"[` | Change a surround from "double" to [brackets] |
 
 
 ### YouCompleteMe (ycm)
