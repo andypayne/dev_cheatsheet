@@ -70,6 +70,7 @@
     + [Uninstalling a plugin](#uninstalling-a-plugin)
   * [Surround](#surround)
   * [YouCompleteMe (ycm)](#youcompleteme-ycm)
+    + [Updating ycm](#updating-ycm)
   * [Fugitive for Git](#fugitive-for-git)
   * [NERDTree file navigator](#nerdtree-file-navigator)
 - [Find command - Ripgrep](#find-command---ripgrep)
@@ -731,6 +732,18 @@ If receiving the error "The ycmd server SHUT DOWN (restart with
 ```zsh
 cd ~/.vim/bundle/YouCompleteMe
 ./install.py
+```
+
+
+#### Updating ycm
+
+I had to update ycm due to some issues with an update of golang. Steps I took:
+```shell
+cd ~/.vim/bundle/YouCompleteMe/third_party/ycmd
+git checkout master
+git pull
+git submodule update --init --recursive
+./build.py --go-completer
 ```
 
 
