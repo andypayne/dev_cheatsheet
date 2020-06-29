@@ -81,12 +81,13 @@
     + [Include all files when searching:](#include-all-files-when-searching)
     + [Include all files and search filenames:](#include-all-files-and-search-filenames)
 - [Git and GitHub](#git-and-github)
-  * [Remotes](#remotes)
   * [Diffs](#diffs)
     + [Show code diffs with logs](#show-code-diffs-with-logs)
+    + [Show diffs of staged files](#show-diffs-of-staged-files)
+    + [Show the diff of the previous commit](#show-the-diff-of-the-previous-commit)
+  * [Remotes](#remotes)
     + [Show the remotes for the current project](#show-the-remotes-for-the-current-project)
     + [Switch to the ssh remote url](#switch-to-the-ssh-remote-url)
-    + [Show diffs of staged files](#show-diffs-of-staged-files)
   * [Cloning over HTTPS or SSH](#cloning-over-https-or-ssh)
   * [Getting the abbreviated commit hash for a commit](#getting-the-abbreviated-commit-hash-for-a-commit)
   * [Reverting the last commit](#reverting-the-last-commit)
@@ -834,7 +835,6 @@ rg -uuu --files | rg -uuu <pattern>
 
 ## Git and GitHub
 
-### Remotes
 
 ### Diffs
 
@@ -845,6 +845,26 @@ git log -p
 ```zsh
 git log --graph -p --all
 ```
+
+#### Show diffs of staged files
+
+```
+git diff --cached [filename]
+```
+
+or:
+```
+git diff --staged [filename]
+```
+
+#### Show the diff of the previous commit
+
+```
+git diff HEAD^ HEAD
+```
+
+
+### Remotes
 
 #### Show the remotes for the current project
 ```
@@ -860,16 +880,6 @@ Ex:
 git remote set-url origin git@github.com:andypayne/dev_cheatsheet.git
 ```
 
-#### Show diffs of staged files
-
-```
-git diff --cached [filename]
-```
-
-or:
-```
-git diff --staged [filename]
-```
 
 ### Cloning over HTTPS or SSH
 
@@ -918,6 +928,7 @@ Revert and push:
 git revert --continue
 git push
 ```
+
 
 ### Forks
 
