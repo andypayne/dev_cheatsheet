@@ -96,3 +96,33 @@ type Topics struct {
 }
 ```
 
+
+## vim-go
+
+### goimports
+
+[goimports](https://godoc.org/golang.org/x/tools/cmd/goimports) is a tool that automatically updates imports to synchronize with usage in the code. It's quite useful, but there is an issue with database drivers when using `"database/sql"`. Database drivers need to be imported, but the import is not referenced directly in your code. So `goimports` happily removes it when the file is saved. There are two ways I've found to override this behavior.
+
+Option 1 - add a reference to the library (cumbersome):
+```golang
+import (
+  ...
+  "github.com/lib/pq"
+)
+
+...
+
+var happyGoImports pq.StringArray
+fmt.Println(happyGoImports)
+```
+
+Option 2 - add an underscore before the import (better):
+```golang
+import (
+  ...
+  _ "github.com/lib/pq"
+)
+
+...
+```
+
