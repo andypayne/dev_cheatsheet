@@ -85,6 +85,8 @@
     + [Show code diffs with logs](#show-code-diffs-with-logs)
     + [Show diffs of staged files](#show-diffs-of-staged-files)
     + [Show the diff of the previous commit](#show-the-diff-of-the-previous-commit)
+    + [Show the diff of all changes from when a branch (branch2) branched off from a parent branch (branch1):](#show-the-diff-of-all-changes-from-when-a-branch-branch2-branched-off-from-a-parent-branch-branch1)
+    + [Create a patch from a diff:](#create-a-patch-from-a-diff)
   * [Remotes](#remotes)
     + [Show the remotes for the current project](#show-the-remotes-for-the-current-project)
     + [Switch to the ssh remote url](#switch-to-the-ssh-remote-url)
@@ -861,6 +863,23 @@ git diff --staged [filename]
 
 ```
 git diff HEAD^ HEAD
+```
+
+#### Show the diff of all changes from when a branch (branch2) branched off from a parent branch (branch1):
+
+```shell
+git diff branch2...branch1
+```
+
+#### Create a patch from a diff:
+
+```shell
+git diff -u --no-prefix > some_patch.diff
+```
+
+Apply the patch:
+```shell
+patch -p0 -i some_patch.diff
 ```
 
 
