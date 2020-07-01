@@ -15,6 +15,7 @@ psql -U postgres
 | --------| ------ |
 | `\du`   | List users/roles |
 | `\l`    | List databases |
+| `\c <db>` | Connect to database named <db> |
 | `\q`    | Quit |
 | `\o <filename>` | Send output to <filename> |
 | `\o`    | Reset output |
