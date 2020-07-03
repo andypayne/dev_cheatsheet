@@ -19,6 +19,7 @@ psql -U postgres
 | `\q`    | Quit |
 | `\o <filename>` | Send output to <filename> |
 | `\o`    | Reset output |
+| `\timing [on|off]` | Enable/disable timing of commands |
 
 Pass SQL to run via the command line:
 ```shell
