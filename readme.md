@@ -794,7 +794,7 @@ navigation plugin.
 
 | Key/Command | Effect |
 | ----------- | ------ |
-| `-`         | Replace the current buffer with a directory listing |
+| `-`         | Replace the current buffer with a directory listing, or move up a level if already in vim-vinegar |
 | `I`         | Toggle displaying hidden files and netrw header info |
 | `y.`        | Yank the absolute path for the file under the cursor |
 | `~`         | Navigate to your home directory |
