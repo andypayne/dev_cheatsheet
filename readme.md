@@ -243,9 +243,11 @@ ss -atpu
   - An outdated Tmux 2.3 on Mac (need to update)
 - [Tmux Cheat Sheet](https://tmuxcheatsheet.com/)
 
+
 ### Prefix
 
 I map my prefix/leader to `C-a` for easier typing.
+
 
 ### Meta
 
@@ -254,10 +256,12 @@ more info:
 - https://thinkingeek.com/2012/11/17/mac-os-x-iterm-meta-key/
 - https://www.iterm2.com/faq.html
 
+
 ### Help, key bindings
 ```
 <prefix> ?
 ```
+
 
 ### Resource config files
 ```
@@ -267,6 +271,7 @@ tmux source ~/.tmux.conf
 <prefix> :source ~/.tmux.conf
 ```
 
+
 ### New Session with `<name>`
 ```
 tmux new -s <name>
@@ -275,15 +280,18 @@ tmux new -s <name>
 :new -s <name>
 ```
 
+
 ### Rename a session
 ```
 <prefix> $
 ```
 
+
 ### Kill a session
 ```
 tmux kill-session -t <name>
 ```
+
 
 ### Kill the current session
 ```
@@ -291,10 +299,12 @@ tmux kill-session -t <name>
 ```
 Then confirm.
 
+
 ### Detach from a session
 ```
 <prefix> d
 ```
+
 
 ### List sessions
 ```
@@ -304,6 +314,7 @@ Switch sessions quickly and visually with:
 ```
 <prefix> s
 ```
+
 
 ### Selecting text
 
@@ -320,6 +331,7 @@ Disable with:
 ```
 q
 ```
+
 
 ### Copy/Paste in panes with tmux buffers
 
