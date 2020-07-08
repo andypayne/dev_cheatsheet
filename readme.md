@@ -28,6 +28,7 @@
   * [Kill the current session](#kill-the-current-session)
   * [Detach from a session](#detach-from-a-session)
   * [List sessions](#list-sessions)
+  * [List key bindings](#list-key-bindings)
   * [Selecting text](#selecting-text)
   * [Scroll through the terminal](#scroll-through-the-terminal)
   * [Copy/Paste in panes with tmux buffers](#copypaste-in-panes-with-tmux-buffers)
@@ -313,6 +314,25 @@ tmux ls
 Switch sessions quickly and visually with:
 ```
 <prefix> s
+```
+
+
+### List key bindings
+
+```shell
+tmux list-keys
+```
+
+or
+
+```
+<prefix> :list-keys
+```
+
+or
+
+```
+<prefix> ?
 ```
 
 
