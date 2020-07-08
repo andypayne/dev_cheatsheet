@@ -516,6 +516,7 @@ Use `"+y` to yank to the system clipboard.
 ### Edit commands
 
 Edit the previous file: `:e#`
+Also: `<leader><space>`, for me: `<space><space>`
 
 
 ### Leader key
