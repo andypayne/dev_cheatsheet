@@ -73,6 +73,7 @@
     + [Updating ycm](#updating-ycm)
   * [Fugitive for Git](#fugitive-for-git)
   * [NERDTree file navigator](#nerdtree-file-navigator)
+  * [vim-vinegar](#vim-vinegar)
 - [Find command - Ripgrep](#find-command---ripgrep)
   * [Show only filenames of files whose contents match the pattern](#show-only-filenames-of-files-whose-contents-match-the-pattern)
   * [Search only files of a given type with -t (example: python files)](#search-only-files-of-a-given-type-with--t-example-python-files)
@@ -769,6 +770,8 @@ Some commands:
 
 ### NERDTree file navigator
 
+Note: I currently have this disabled while trying `vim-vinegar`.
+
 | Key/Command | Effect |
 | ----------- | ------ |
 | `:NERDTree` | open NERDTree |
@@ -782,6 +785,21 @@ I map `<leader>ne` to open NERDTree:
 ```
 nmap <leader>ne :NERDTree<cr>
 ```
+
+
+### vim-vinegar
+
+[vim-vinegar](https://github.com/tpope/vim-vinegar) is an alternative file
+navigation plugin.
+
+| Key/Command | Effect |
+| ----------- | ------ |
+| `-`         | Replace the current buffer with a directory listing |
+| `I`         | Toggle displaying hidden files and netrw header info |
+| `y.`        | Yank the absolute path for the file under the cursor |
+| `~`         | Navigate to your home directory |
+| `.`         | Start a `:` command sequence with the path of the file, ex: `.grep foo` |
+| `!`         | Start a shell command with the path of the file, ex: `!chmod +x` |
 
 
 ## Find command - Ripgrep
