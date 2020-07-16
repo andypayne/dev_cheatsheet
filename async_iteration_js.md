@@ -1,5 +1,5 @@
 
-To make a call in an serial/iterative fashion and use the results of each call
+To make a call in a serial/iterative fashion and use the results of each call
 as input to the next call, one way is to use a loop with await inside an
 [IIFE](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression):
 
