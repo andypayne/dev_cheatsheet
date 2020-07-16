@@ -1,0 +1,138 @@
+# Notes on Amazon Web Services (AWS)
+
+## Elastic Beanstalk
+
+### Create an environment for a git repo
+
+#### 1. Run `eb create`
+
+```shell
+$ eb create
+
+Enter Environment Name
+(default is foo-bar-env):
+Enter DNS CNAME prefix
+(default is foo-bar-env): yoyo
+
+Select a load balancer type
+1) classic
+2) application
+3) network
+(default is 2): 1
+
+
+Would you like to enable Spot Fleet requests for this environment?
+(y/N): n
+Creating application version archive "app-xxxx-987654_123456".
+Uploading: [##################################################] 100% Done...
+Environment details for: yoyo
+  Application name: my-git-proj
+  Region: us-west-2
+  Deployed Version: app-xxxx-987654_123456
+  Environment ID: e-xyzqrstuvw
+  Platform: arn:aws:elasticbeanstalk:us-west-2::platform/Node.js running on 64bit Amazon Linux/4.8.1
+  Tier: WebServer-Standard-1.0
+  CNAME: yoyo.us-west-2.elasticbeanstalk.com
+  Updated: 2020-07-12 13:15:00.000000+00:00
+
+Printing Status:
+...
+```
+
+
+#### 2. Modify the load balancer to support HTTPS traffic
+
+To support HTTPS traffic externally and route it to the listener using HTTP:
+
+1. Go to the Elastic Beanstalk web console and configure the load balancer.
+2. Disable the listener for port 80.
+3. Add a listener for port 443 with listener protocol HTTPS and instance protocol HTTP.
+4. Select the appropriate SSL certificate for the domain you want to redirect to this environment.
+5. Enable session stickiness.
+6. Modify the load balancer listener ports to be 443 only.
+7. Click `Apply` to save the settings and update the environment.
+
+
+#### 3. Create the DNS record in Route 53
+
+1. In Route 53, create a new record set.
+2. Type in a hostname and select type `A - IPv4 address`.
+3. Select 'yes' for Alias.
+4. In the `Alias Target` field, select the name of the newly created Elastic Beanstalk environment.
+5. Save the record set.
+
+
+## S3 and CloudFront
+
+### Create a bucket for a web app for access with HTTPS
+
+We'll use CloudFront to achieve SSL support.
+
+#### 1. Create and configure a new bucket
+
+1. Create a new bucket in the S3 web console.
+2. Enter the hostname as the bucket name.
+3. For permissions, turn off `Block all public access` (since we're hosting a publicly-accessible web app).
+4. Edit the bucket -- under `Permissions -> Access Control List -> Public access`, grant permission `List objects` to group `Everyone`.
+5. Under `Bucket Policy`, add a policy that grants access to the CloudFront user:
+```json
+{
+    "Version": "2008-10-17",
+    "Id": "PolicyForCloudFrontPrivateContent",
+    "Statement": [
+        {
+            "Sid": "1",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity X1F723G45ZBGM7"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::proj.example.com/*"
+        }
+    ]
+}
+```
+6. Go to `Properties -> Static website hosting`, and select `Use this bucket to
+   host a website`.
+7. Set the proper `Index document` (`index.html`).
+8. In order to support client-side routing, the `Error document` should also be set to the same root document (`index.html`).
+
+
+#### 2. Create a Distribution in CloudFront
+
+1. In CloudFront, click `Create Distribution`.
+2. Under `Web`, select `Get Started`.
+3. For `Origin Domain Name`, select the name of the S3 bucket created previously.
+4. Enable `Restrict Bucket Access` to require accessing the bucket through CloudFront.
+5. Select or create an identity to use to access the bucket.
+6. Select `Grant Read Permissions on Bucket` to let CloudFront grant permissions for this identity.
+7. Under `Default Cache Behavior Settings`, for `Viewer Protocol Policy`, select `Redirect HTTP to HTTPS` to enforce usage on HTTPS.
+8. Select the allowed HTTP verbs you want to use.
+9. For `Forward Cookies`, select `All` if needed.
+10. Under `Distribution Settings`, for `Alternate Domain Names (CNAMEs)`, add the public-facing domain name(s) you are using.
+11. Select the `SSL Certificate` that you are using. If you need a custom certificate and haven't created one yet, you will probably have to restart the CloudFront distribution creation process after creating a custom certificate with `ACM`.
+12. For `Default Root Object`, add your root file (`index.html`).
+13. Click `Create Distribution`.
+14. Edit the distribution - under `Error Pages`, select `Create Custom Error Response`.
+15. Select `HTTP Error Code` of `404: Not Found`.
+16. Select `Customize Error Response`.
+17. For `Response Page Path`, enter the path to the root document (`/index.html`).
+18. For `HTTP Response Code`, select `200: OK`.
+
+
+#### 3. Configure the hostname in Route 53
+
+Create a new record set of type `A` with an `Alias` with target pointing to the CloudFront distribution just created.
+
+
+#### 4. Deploy
+
+With the AWS command line tool:
+
+```shell
+aws s3 sync build/ s3://proj.example.com --delete
+```
+
+Then probably create an invalidation in CloudFront.
+
+
