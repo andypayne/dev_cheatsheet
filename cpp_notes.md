@@ -232,3 +232,9 @@ Total Test time (real) =   0.00 sec
 ```
 
 
+### Run a specific test case
+
+```shell
+./tests/example_tests --gtest_filter=Example.SomeTest
+```
+
