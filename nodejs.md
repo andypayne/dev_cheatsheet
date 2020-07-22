@@ -272,3 +272,15 @@ Then open Chrome/Chromium, enter `chrome://inspect`, and click `Open Dedicated
 DevTools for Node`. Then resume the debugger, which is automatically paused at a
 breakpoint.
 
+
+### beforeEach async
+
+If you have an async activity to setup in `beforeEach`, you can either use the `done` parameter, or return a value from `beforeEach`:
+
+```javascript
+beforeEach(async () => {
+  const someObj = await anActivity();
+  return someObj;
+});
+```
+
