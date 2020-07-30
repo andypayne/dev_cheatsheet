@@ -238,3 +238,16 @@ Total Test time (real) =   0.00 sec
 ./tests/example_tests --gtest_filter=Example.SomeTest
 ```
 
+
+## String processing
+
+### Building up strings
+
+`std::to_string` ([reference](http://www.cplusplus.com/reference/string/to_string/) is useful for building up strings from other data types:
+
+```cpp
+int x = 4;
+std::string s = "This is a string " + "made from " + std::to_string(x) + " parts.";
+```
+
+
