@@ -102,6 +102,7 @@
 - [`pkg-config` notes](#pkg-config-notes)
 - [Delete empty directories](#delete-empty-directories)
 - [Hex dumps](#hex-dumps)
+- [Bat (replacement for cat)](#bat-replacement-for-cat)
 
 <TOC>
 
@@ -1088,5 +1089,31 @@ The `xxd` command can be used to do hex dumps:
 ```shell
 echo "foobar" | xxd
 00000000: 666f 6f62 6172 0a                        foobar.
+```
+
+
+## Bat (replacement for cat)
+
+[bat](https://github.com/sharkdp/bat) is a cat alternative with syntax highlighting and git integration.
+
+Install on Ubuntu:
+```shell
+apt install bat
+```
+
+Install on Mac:
+```shell
+brew install bat
+```
+
+Example use with `tail -f`:
+```shell
+tail -f /var/log/syslog | bat --paging=never -l log
+───────┬────────────────────────────────────────────────────────────────────────
+       │ STDIN
+───────┼────────────────────────────────────────────────────────────────────────
+   1   │ Aug 26 09:55:54 host lircd[1288]: lircd-0.10.0[1288]: Error: Cannot glob /sys/class/rc/rc0/input[0-9]*/event[0-9]*
+   2   │ Aug 26 09:55:54 host lircd-0.10.0[1288]: Error: Cannot glob /sys/class/rc/rc0/input[0-9]*/event[0-9]*
+...
 ```
 
