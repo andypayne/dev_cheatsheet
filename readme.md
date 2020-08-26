@@ -22,7 +22,7 @@
   * [Meta](#meta)
   * [Help, key bindings](#help-key-bindings)
   * [Resource config files](#resource-config-files)
-  * [New Session with ``](#new-session-with-)
+  * [New named session](#new-named-session)
   * [Rename a session](#rename-a-session)
   * [Kill a session](#kill-a-session)
   * [Kill the current session](#kill-the-current-session)
@@ -276,7 +276,8 @@ tmux source ~/.tmux.conf
 ```
 
 
-### New Session with `<name>`
+### New named session 
+To start a new session with `<name>`:
 ```
 tmux new -s <name>
 ```
