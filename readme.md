@@ -89,6 +89,8 @@
     + [Show the diff of the previous commit](#show-the-diff-of-the-previous-commit)
     + [Show the diff of all changes from when a branch (branch2) branched off from a parent branch (branch1):](#show-the-diff-of-all-changes-from-when-a-branch-branch2-branched-off-from-a-parent-branch-branch1)
     + [Create a patch from a diff:](#create-a-patch-from-a-diff)
+  * [Stash](#stash)
+    + [Stash interactively](#stash-interactively)
   * [Remotes](#remotes)
     + [Show the remotes for the current project](#show-the-remotes-for-the-current-project)
     + [Switch to the ssh remote url](#switch-to-the-ssh-remote-url)
@@ -931,6 +933,24 @@ git diff -u --no-prefix > some_patch.diff
 Apply the patch:
 ```shell
 patch -p0 -i some_patch.diff
+```
+
+
+### Stash
+
+#### Stash interactively
+
+```shell
+git stash save -p "some message"
+```
+
+Some options:
+```
+y - stash
+n - don't stash
+q - quit
+a - stash this hunk and all later hunks in the file
+d - don't stash this hunk or any later hunks in the file
 ```
 
 
