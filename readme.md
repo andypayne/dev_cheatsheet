@@ -28,6 +28,7 @@
   * [Kill the current session](#kill-the-current-session)
   * [Detach from a session](#detach-from-a-session)
   * [List sessions](#list-sessions)
+  * [Attach to the last session](#attach-to-the-last-session)
   * [List key bindings](#list-key-bindings)
   * [Selecting text](#selecting-text)
   * [Scroll through the terminal](#scroll-through-the-terminal)
@@ -103,6 +104,8 @@
 - [Delete empty directories](#delete-empty-directories)
 - [Hex dumps](#hex-dumps)
 - [Bat (replacement for cat)](#bat-replacement-for-cat)
+- [Image conversion](#image-conversion)
+  * [Convert from svg to png](#convert-from-svg-to-png)
 
 <TOC>
 
@@ -1122,5 +1125,15 @@ tail -f /var/log/syslog | bat --paging=never -l log
    1   │ Aug 26 09:55:54 host lircd[1288]: lircd-0.10.0[1288]: Error: Cannot glob /sys/class/rc/rc0/input[0-9]*/event[0-9]*
    2   │ Aug 26 09:55:54 host lircd-0.10.0[1288]: Error: Cannot glob /sys/class/rc/rc0/input[0-9]*/event[0-9]*
 ...
+```
+
+
+## Image conversion
+
+### Convert from svg to png
+
+With Inkscape:
+```shell
+inkscape -z -w 512 -h 512 image.svg -e image.png
 ```
 
