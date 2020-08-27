@@ -321,6 +321,12 @@ Switch sessions quickly and visually with:
 ```
 
 
+### Attach to the last session
+```
+tmux a
+```
+
+
 ### List key bindings
 
 ```shell
