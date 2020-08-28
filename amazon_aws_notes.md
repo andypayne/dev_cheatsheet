@@ -4,6 +4,8 @@
 
 ### Create an environment for a git repo
 
+#### 0. Run `eb init` in the project if it hasn't been done.
+
 #### 1. Run `eb create`
 
 ```shell
