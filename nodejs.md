@@ -284,3 +284,12 @@ beforeEach(async () => {
 });
 ```
 
+
+### Run test code in an arbitrary file
+
+Sometimes you might have tests you want to run in a file that doesn't match Jest's default test regex pattern (perhaps because it's not in the `test/` directory. You can work around this by specifying a pattern that matches the file you want to run. For example, if you have a file called `some-tests.js` in your project's root that you want to run, you can do that with:
+
+```shell
+jest --testRegex=some-tests ./some-tests.js
+```
+
