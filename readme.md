@@ -104,8 +104,11 @@
 - [Delete empty directories](#delete-empty-directories)
 - [Hex dumps](#hex-dumps)
 - [Bat (replacement for cat)](#bat-replacement-for-cat)
-- [Image conversion](#image-conversion)
+- [Image, Video, and Audio conversion](#image-video-and-audio-conversion)
   * [Convert from svg to png](#convert-from-svg-to-png)
+  * [Show media file info](#show-media-file-info)
+  * [Convert a video from mp4 to y4m](#convert-a-video-from-mp4-to-y4m)
+  * [Extract audio from a video](#extract-audio-from-a-video)
 
 <TOC>
 
@@ -1128,12 +1131,42 @@ tail -f /var/log/syslog | bat --paging=never -l log
 ```
 
 
-## Image conversion
+## Image, Video, and Audio conversion
 
 ### Convert from svg to png
 
 With Inkscape:
 ```shell
 inkscape -z -w 512 -h 512 image.svg -e image.png
+```
+
+
+### Show media file info
+
+```shell
+ffprobe video.mp4
+```
+
+
+### Convert a video from mp4 to y4m
+
+This is useful for loading as a media capture file in Chrome.
+
+With `ffmpeg`:
+```shell
+ffmpeg -i video.mp4 -pix_fmt yuv420p video.y4m
+```
+
+
+### Extract audio from a video
+
+As `aac`:
+```shell
+ffmpeg -y -i video.mp4 -f aac -vn audio.aac
+```
+
+As `wav`:
+```shell
+ffmpeg -y -i video.mp4 -f wav -vn audio.wav
 ```
 
