@@ -6,6 +6,8 @@
 
 #### 0. Run `eb init` in the project if it hasn't been done.
 
+Select the region, the project name, the application (or create a new one), and whether you want ssh enabled.
+
 #### 1. Run `eb create`
 
 ```shell
