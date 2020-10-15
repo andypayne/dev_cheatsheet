@@ -8,7 +8,52 @@
 
 Select the region, the project name, the application (or create a new one), and whether you want ssh enabled.
 
-#### 1. Run `eb create`
+
+#### 1. Add an .npmrc file
+
+When running `eb create` (below) you may get errors like this:
+
+```
+2020-10-15 22:32:13    INFO    createEnvironment is starting.
+2020-10-15 22:32:14    INFO    Using elasticbeanstalk-us-west-2-123 as Amazon S3 storage bucket for environment data.
+2020-10-15 22:32:35    INFO    Created security group named: sg-123abc
+2020-10-15 22:32:35    INFO    Created load balancer named: awseb-e-2-AWSEBLoa-123ABC456
+2020-10-15 22:32:52    INFO    Created security group named: awseb-e-123-stack-AWSEBSecurityGroup-ABC
+2020-10-15 22:32:52    INFO    Created Auto Scaling launch configuration named: awseb-e-123-stack-AWSEBAutoScalingLaunchConfiguration-ABC
+2020-10-15 22:33:39    INFO    Created Auto Scaling group named: awseb-e-123-stack-AWSEBAutoScalingGroup-ABC
+2020-10-15 22:33:39    INFO    Waiting for EC2 instances to launch. This may take a few minutes.
+2020-10-15 22:33:54    INFO    Created Auto Scaling group policy named:
+arn:aws:autoscaling:us-west-2:1234:scalingPolicy:123-abc:autoScalingGroupName/awseb-e-123-stack-AWSEBAutoScalingGroup-ABC:policyName/awseb-e-123-stack-AWSEBAutoScalingScaleUpPolicy-ABC
+2020-10-15 22:33:54    INFO    Created Auto Scaling group policy named:
+arn:aws:autoscaling:us-west-2:123:scalingPolicy:abc:autoScalingGroupName/awseb-e-123-stack-AWSEBAutoScalingGroup-ABC:policyName/awseb-e-123-stack-AWSEBAutoScalingScaleDownPolicy-ABC
+2020-10-15 22:33:54    INFO    Created CloudWatch alarm named:
+awseb-e-123-stack-AWSEBCloudwatchAlarmHigh-ABC
+2020-10-15 22:33:54    INFO    Created CloudWatch alarm named:
+awseb-e-123-stack-AWSEBCloudwatchAlarmLow-ABC
+2020-10-15 22:33:58    INFO    Instance deployment: You didn't specify a Node.js version in the 'package.json' file in your source bundle. The deployment didn't install a specific Node.js version.
+2020-10-15 22:34:13    ERROR   Instance deployment failed. For details, see 'eb-engine.log'.
+2020-10-15 22:34:13    ERROR   Instance deployment: 'npm' failed to install dependencies that you defined in 'package.json'. For details, see
+'eb-engine.log'. The deployment failed.
+2020-10-15 22:34:14    ERROR   [Instance: i-abc123] Command failed on instance. Return code: 1 Output: Engine execution has encountered an error..
+2020-10-15 22:34:14    INFO    Command execution completed on all instances. Summary: [Successful: 0, Failed: 1].
+2020-10-15 22:35:16    ERROR   Create environment operation is complete, but with errors. For more information, see troubleshooting documentation.
+ERROR: ServiceError - Create environment operation is complete, but with errors.
+For more information, see troubleshooting documentation.
+```
+
+If so, then here's a workaround:
+1.  Create a `.npmrc` file in the project root:
+```
+# Force npm to run node-gyp as root
+unsafe-perm=true
+```
+2. Check the file into git
+3. Then proceed with `eb create` as below.
+
+More info is in this [Stack Overflow thread](https://stackoverflow.com/questions/46001516/beanstalk-node-js-deployment-node-gyp-fails-due-to-permission-denied).
+
+
+#### 2. Run `eb create`
 
 ```shell
 $ eb create
@@ -44,7 +89,7 @@ Printing Status:
 ```
 
 
-#### 2. Modify the load balancer to support HTTPS traffic
+#### 3. Modify the load balancer to support HTTPS traffic
 
 To support HTTPS traffic externally and route it to the listener using HTTP:
 
@@ -57,7 +102,7 @@ To support HTTPS traffic externally and route it to the listener using HTTP:
 7. Click `Apply` to save the settings and update the environment.
 
 
-#### 3. Create the DNS record in Route 53
+#### 4. Create the DNS record in Route 53
 
 1. In Route 53, create a new record set.
 2. Type in a hostname and select type `A - IPv4 address`.
