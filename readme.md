@@ -17,6 +17,12 @@
     + [Info about all displays](#info-about-all-displays)
   * [Processing units](#processing-units)
   * [Network services](#network-services)
+  * [DNS](#dns)
+    + [Check whether resolved is running](#check-whether-resolved-is-running)
+    + [Flush the resolved DNS cache](#flush-the-resolved-dns-cache)
+    + [Check whether network-manager is running](#check-whether-network-manager-is-running)
+    + [Restart network-manager](#restart-network-manager)
+    + [Status for network-manager](#status-for-network-manager)
 - [Tmux](#tmux)
   * [Prefix](#prefix)
   * [Meta](#meta)
@@ -243,6 +249,46 @@ You can use `make -j$(nproc)` but I'm sparing a few by using `make -j8`.
 To see info on all running services that are listening on the network:
 ```shell
 ss -atpu
+```
+
+
+### DNS
+
+#### Check whether resolved is running
+
+An active response indicates it's running:
+```shell
+sudo systemctl is-active systemd-resolved.service
+active
+```
+
+
+#### Flush the resolved DNS cache
+
+```shell
+sudo systemd-resolve --flush-caches
+```
+
+
+#### Check whether network-manager is running
+
+```shell
+sudo systemctl is-active network-manager
+active
+```
+
+
+#### Restart network-manager
+
+```shell
+sudo service network-manager restart
+```
+
+
+#### Status for network-manager
+
+```shell
+sudo service network-manager status
 ```
 
 
