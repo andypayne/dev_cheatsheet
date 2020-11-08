@@ -67,6 +67,7 @@
     + [List registers](#list-registers)
     + [Change inner word](#change-inner-word)
     + [Changes](#changes)
+    + [Apply an edit to each line in a region](#apply-an-edit-to-each-line-in-a-region)
     + [Reverse the order of lines](#reverse-the-order-of-lines)
     + [Ex mode substitutions](#ex-mode-substitutions)
     + [Searching in Vim](#searching-in-vim)
@@ -697,6 +698,14 @@ List the changes for the current buffer:
 Navigate changes:
 - `g;` to navigate to the position of the previous change
 - `g,` to navigate to the position of the next change
+
+
+### Apply an edit to each line in a region
+
+1. `c-v` to enter visual block mode
+2. Highlight the region
+3. Make the edit (ex: `I  foo` to prepend "  foo" to each line)
+4. `esc`
 
 
 ### Reverse the order of lines
