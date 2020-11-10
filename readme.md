@@ -62,6 +62,7 @@
     + [Edit commands](#edit-commands)
     + [Leader key](#leader-key)
     + [Go to definition/file/etc](#go-to-definitionfileetc)
+    + [Go to matching brace](#go-to-matching-brace)
     + [Macros](#macros)
       - [Record a macro to surround a word in double quotes](#record-a-macro-to-surround-a-word-in-double-quotes)
     + [List registers](#list-registers)
@@ -648,6 +649,15 @@ For a keyword under the cursor:
 - `g*` and `g#` to search forward/backward
 - `gf` to open the file under the cursor
 - `g]` to jump to a tag definition
+
+
+### Go to matching brace
+
+To jump between matching braces or supported keyword pairs (Ex: `#ifdef/#endif`), use the percent key:
+
+```
+%
+```
 
 
 ### Macros
