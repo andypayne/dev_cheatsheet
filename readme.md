@@ -77,6 +77,10 @@
     + [Display full error messages](#display-full-error-messages)
     + [Debugging syntax or plugin issues with syntime](#debugging-syntax-or-plugin-issues-with-syntime)
     + [Colortest](#colortest)
+    + [Color schemes](#color-schemes)
+      - [Show the current colorscheme](#show-the-current-colorscheme)
+      - [List all installed colorschemes](#list-all-installed-colorschemes)
+      - [Set a colorscheme](#set-a-colorscheme)
     + [List loaded scripts/plugins](#list-loaded-scriptsplugins)
     + [vim-plug](#vim-plug)
       - [Uninstalling a plugin](#uninstalling-a-plugin)
@@ -805,6 +809,32 @@ To find text in files - [Ripgrep](https://github.com/BurntSushi/ripgrep):
 ```
 :runtime syntax/colortest.vim
 ```
+
+
+### Color schemes
+
+#### Show the current colorscheme
+```
+:colorscheme
+```
+
+#### List all installed colorschemes
+```
+:colorscheme <tab>
+```
+
+#### Set a colorscheme
+```
+:colorscheme elflord
+```
+
+Others that are ok:
+- industry
+- koehler
+- pablo
+- ron
+- torte
+- zellner
 
 
 ### List loaded scripts/plugins
