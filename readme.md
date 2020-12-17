@@ -123,6 +123,7 @@
     + [Show media file info](#show-media-file-info)
     + [Convert a video from mp4 to y4m](#convert-a-video-from-mp4-to-y4m)
     + [Extract audio from a video](#extract-audio-from-a-video)
+  * [cheat.sh](#cheatsh)
 
 <TOC>
 
@@ -1272,5 +1273,17 @@ ffmpeg -y -i video.mp4 -f aac -vn audio.aac
 As `wav`:
 ```shell
 ffmpeg -y -i video.mp4 -f wav -vn audio.wav
+```
+
+
+## cheat.sh
+
+[cheat.sh](http://cheat.sh/) has a nice interface for getting help and examples
+for common commands. My convenience alias for it is:
+
+```
+cheat() {
+  curl cheat.sh/"$@" | bat
+}
 ```
 
