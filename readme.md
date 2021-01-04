@@ -124,6 +124,7 @@
     + [Convert a video from mp4 to y4m](#convert-a-video-from-mp4-to-y4m)
     + [Extract audio from a video](#extract-audio-from-a-video)
   * [cheat.sh](#cheatsh)
+  * [Key repeats on MacOS](#key-repeats-on-macos)
 
 <TOC>
 
@@ -1285,5 +1286,15 @@ for common commands. My convenience alias for it is:
 cheat() {
   curl cheat.sh/"$@" | bat
 }
+```
+
+
+## Key repeats on MacOS
+
+To [enable key repeats on
+Mac](https://www.howtogeek.com/267463/how-to-enable-key-repeating-in-macos/), set this and then restart:
+
+```shell
+defaults write -g ApplePressAndHoldEnabled -bool false
 ```
 
