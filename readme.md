@@ -42,6 +42,7 @@
     + [Copy/Paste in panes with tmux buffers](#copypaste-in-panes-with-tmux-buffers)
       - [Default](#default)
       - [Vim mappings](#vim-mappings)
+    + [Paste buffers in Tmux](#paste-buffers-in-tmux)
     + [Tmux Plugin Manager](#tmux-plugin-manager)
       - [Install plugins and refresh](#install-plugins-and-refresh)
     + [tmux-continuum and tmux-resurrect](#tmux-continuum-and-tmux-resurrect)
@@ -476,6 +477,29 @@ y
 5. Paste the copied text:
 ```
 <prefix> P
+```
+
+
+### Paste buffers in Tmux
+
+List paste buffers:
+```
+<prefix>:list-buffers
+```
+
+Show the current buffer:
+```
+<prefix>:show-buffer
+```
+
+Show the second buffer:
+```
+<prefix>:show-buffer -b 2
+```
+
+Save the current paste buffer to a file named filename.txt:
+```
+<prefix>:save-buffer filename.txt
 ```
 
 
