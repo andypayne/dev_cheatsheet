@@ -91,6 +91,7 @@
     + [Fugitive for Git](#fugitive-for-git)
     + [NERDTree file navigator](#nerdtree-file-navigator)
     + [vim-vinegar](#vim-vinegar)
+    + [vim-hug-neovim-rpc pythonx error](#vim-hug-neovim-rpc-pythonx-error)
   * [Find command - Ripgrep](#find-command---ripgrep)
     + [Show only filenames of files whose contents match the pattern](#show-only-filenames-of-files-whose-contents-match-the-pattern)
     + [Search only files of a given type with -t (example: python files)](#search-only-files-of-a-given-type-with--t-example-python-files)
@@ -978,6 +979,21 @@ navigation plugin.
 | `~`         | Navigate to your home directory |
 | `.`         | Start a `:` command sequence with the path of the file, ex: `.grep foo` |
 | `!`         | Start a shell command with the path of the file, ex: `!chmod +x` |
+
+
+### vim-hug-neovim-rpc pythonx error
+
+Error:
+
+```
+[vim-hug-neovim-rpc] Vim(pythonx):ModuleNotFoundError: No module named 'neovim'
+```
+
+[Fix](https://github.com/roxma/vim-hug-neovim-rpc/issues/47#issuecomment-463410146):
+
+1. Make sure that vim has been compiled with python3 support by running `:ver` or `:echo has('python3')`
+2. Run `pip3 install pynvim`
+3. Run `pip3 install neovim`
 
 
 ## Find command - Ripgrep
