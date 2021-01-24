@@ -24,6 +24,7 @@
       - [Check whether network-manager is running](#check-whether-network-manager-is-running)
       - [Restart network-manager](#restart-network-manager)
       - [Status for network-manager](#status-for-network-manager)
+    + [inxi - handy for system info](#inxi---handy-for-system-info)
   * [Tmux](#tmux)
     + [Prefix](#prefix)
     + [Meta](#meta)
@@ -301,6 +302,18 @@ sudo service network-manager restart
 
 ```shell
 sudo service network-manager status
+```
+
+
+### inxi - handy for system info
+
+```
+sudo apt install inxi
+```
+
+Network info:
+```
+inxi -n
 ```
 
 
