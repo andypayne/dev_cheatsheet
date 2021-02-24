@@ -24,6 +24,20 @@ drive push ./new_directory
 ```
 
 
+## Push updates without clobbering upstream changes
+
+```shell
+drive push -no-clobber ./some_dir
+```
+
+
+## Pull down updates
+
+```shell
+drive pull ./some_dir
+```
+
+
 ## List features
 
 ```shell
