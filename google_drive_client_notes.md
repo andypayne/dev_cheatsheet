@@ -38,6 +38,13 @@ drive pull ./some_dir
 ```
 
 
+## Check quota
+
+```shell
+drive quota
+```
+
+
 ## List features
 
 ```shell
