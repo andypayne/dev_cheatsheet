@@ -25,6 +25,7 @@
       - [Restart network-manager](#restart-network-manager)
       - [Status for network-manager](#status-for-network-manager)
     + [inxi - handy for system info](#inxi---handy-for-system-info)
+    + [Other network/wifi tools](#other-networkwifi-tools)
   * [Tmux](#tmux)
     + [Prefix](#prefix)
     + [Meta](#meta)
@@ -117,6 +118,8 @@
     + [Reverting the last commit](#reverting-the-last-commit)
     + [Forks](#forks)
     + [Submodules](#submodules)
+  * [SSH notes](#ssh-notes)
+    + [Sharing keys for passwordless login](#sharing-keys-for-passwordless-login)
   * [`pkg-config` notes](#pkg-config-notes)
   * [Delete empty directories](#delete-empty-directories)
   * [Hex dumps](#hex-dumps)
@@ -314,6 +317,29 @@ sudo apt install inxi
 Network info:
 ```
 inxi -n
+```
+
+
+### Other network/wifi tools
+
+```
+nmcli
+```
+
+```
+nmcli show devices
+```
+
+```
+iw dev
+```
+
+```
+iw phy
+```
+
+```
+lshw -C network
 ```
 
 
@@ -1224,6 +1250,31 @@ Update a submodule:
 ```shell
 git submodule update --remote
 ```
+
+
+## SSH notes
+
+### Sharing keys for passwordless login
+
+1. Generate a key on the local system, if not yet done.
+
+RSA:
+```shell
+ssh-keygen -t rsa
+```
+
+Ed25519:
+```shell
+ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "user@example.com"
+```
+
+2. Copy the public key to the remote system.
+
+```shell
+ssh-copy-id -i ~/.ssh/id_rsa.pub username@remote.server
+```
+
+3. Try it.
 
 
 ## `pkg-config` notes
