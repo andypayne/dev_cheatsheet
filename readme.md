@@ -66,6 +66,7 @@
     + [Leader key](#leader-key)
     + [Go to definition/file/etc](#go-to-definitionfileetc)
     + [Go to matching brace](#go-to-matching-brace)
+    + [Folding](#folding)
     + [Macros](#macros)
       - [Record a macro to surround a word in double quotes](#record-a-macro-to-surround-a-word-in-double-quotes)
     + [List registers](#list-registers)
@@ -728,6 +729,21 @@ To jump between matching braces or supported keyword pairs (Ex: `#ifdef/#endif`)
 ```
 %
 ```
+
+
+### Folding
+
+I mostly only use folding for large data files, like json files.
+
+Enable:
+```
+:set foldmethod=syntax
+```
+
+Commands:
+- `za` toggle a fold
+- `zc` close a fold
+- `zo` open a fold
 
 
 ### Macros
