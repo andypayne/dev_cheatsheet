@@ -16,6 +16,7 @@
     + [Display info (external screens etc)](#display-info-external-screens-etc)
       - [List active monitors](#list-active-monitors)
       - [Info about all displays](#info-about-all-displays)
+    + [Removing PPA Repositories](#removing-ppa-repositories)
     + [Processing units](#processing-units)
     + [Network services](#network-services)
     + [DNS](#dns)
@@ -134,7 +135,6 @@
   * [Key repeats on MacOS](#key-repeats-on-macos)
 
 <TOC>
-
 ## Dotfiles - Thoughtbot
 
 I'm using the [Thoughtbot Dotfiles](https://github.com/thoughtbot/dotfiles) with
@@ -246,6 +246,21 @@ xrandr --listmonitors
 #### Info about all displays
 ```
 xrandr
+```
+
+
+### Removing PPA Repositories
+
+When getting the annoying "does not have a release file" errors with `apt`, to
+remove a repository manually, use `add-apt-repository` (if `ppa-purge` is not
+installed or doesn't work). To remove:
+```shell
+sudo add-apt-repository -r ppa:<name>/<repo>
+```
+
+A troublesome one for me:
+```shell
+sudo add-apt-repository -r ppa:twodopeshaggy/drive
 ```
 
 
