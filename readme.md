@@ -68,6 +68,7 @@
     + [Go to definition/file/etc](#go-to-definitionfileetc)
     + [Go to matching brace](#go-to-matching-brace)
     + [Folding](#folding)
+    + [The gutter column](#the-gutter-column)
     + [Macros](#macros)
       - [Record a macro to surround a word in double quotes](#record-a-macro-to-surround-a-word-in-double-quotes)
     + [List registers](#list-registers)
@@ -759,6 +760,20 @@ Commands:
 - `za` toggle a fold
 - `zc` close a fold
 - `zo` open a fold
+
+
+### The gutter column
+
+Sometimes it's useful to disable the left gutter column (used by syntax checkers etc) when you want to copy and paste text. How:
+
+```
+:set signcolumn=no
+```
+
+To reenable it:
+```
+:set signcolumn=auto
+```
 
 
 ### Macros
