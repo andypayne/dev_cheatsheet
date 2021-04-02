@@ -8,6 +8,8 @@
     + [Select multiple entries](#select-multiple-entries)
     + [Other options](#other-options)
     + [Use with bat](#use-with-bat)
+    + [Setup with fd and bat](#setup-with-fd-and-bat)
+    + [Search example](#search-example)
 - [Password Manager](#password-manager)
 - [Regolith - Tiling I3-based Window Manager](#regolith---tiling-i3-based-window-manager)
 - [Ubuntu](#ubuntu)
@@ -195,6 +197,18 @@ each desired item.
 
 ```shell
 fzf --preview 'bat --color=always --line-range :50 {}'
+```
+
+#### Setup with fd and bat
+
+Remember to create symlinks from `fd` to `fdfind` and `bat` to `batcat`. And set
+the `$FZF_...` variables in `zshrc.local` before sourcing the fzf shell script.
+
+#### Search example
+
+Show results for `src` but exclude `espnet` and `__pycache__`:
+```shell
+> src !espnet !__pycache__
 ```
 
 
