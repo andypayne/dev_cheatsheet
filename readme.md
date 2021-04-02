@@ -10,6 +10,7 @@
     + [Use with bat](#use-with-bat)
     + [Setup with fd and bat](#setup-with-fd-and-bat)
     + [Search example](#search-example)
+    + [Completion examples](#completion-examples)
 - [Password Manager](#password-manager)
 - [Regolith - Tiling I3-based Window Manager](#regolith---tiling-i3-based-window-manager)
 - [Ubuntu](#ubuntu)
@@ -210,6 +211,16 @@ Show results for `src` but exclude `espnet` and `__pycache__`:
 ```shell
 > src !espnet !__pycache__
 ```
+
+#### Completion examples
+
+As outlined in the
+[readme](https://github.com/junegunn/fzf#fuzzy-completion-for-bash-and-zsh), fzf has a trigger sequence for completions -- `**`. Change the trigger sequence with `$FZF_COMPLETION_TRIGGER`.
+
+- `vi **<tab>`
+- `ssh **<tab>`
+- `kill <tab>` - search for processes by name (no trigger sequence needed)
+- `export **<tab>`
 
 
 ## Password Manager
