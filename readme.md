@@ -11,6 +11,7 @@
     + [Setup with fd and bat](#setup-with-fd-and-bat)
     + [Search example](#search-example)
     + [Completion examples](#completion-examples)
+    + [Command option preview](#command-option-preview)
 - [Password Manager](#password-manager)
 - [Regolith - Tiling I3-based Window Manager](#regolith---tiling-i3-based-window-manager)
 - [Ubuntu](#ubuntu)
@@ -221,6 +222,14 @@ As outlined in the
 - `ssh **<tab>`
 - `kill <tab>` - search for processes by name (no trigger sequence needed)
 - `export **<tab>`
+
+#### Command option preview
+
+I haven't found a great way to use this yet, but it's promising.
+
+```shell
+echo '' | fzf --print-query --preview-window wrap --preview 'cat some_file.json | jq {q}'
+```
 
 
 ## Password Manager
