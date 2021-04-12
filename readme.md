@@ -74,6 +74,7 @@
   * [Leader key](#leader-key)
   * [Go to definition/file/etc](#go-to-definitionfileetc)
   * [Go to matching brace](#go-to-matching-brace)
+  * [Go to changes](#go-to-changes)
   * [Folding](#folding)
   * [The gutter column](#the-gutter-column)
   * [Macros](#macros)
@@ -813,6 +814,12 @@ To jump between matching braces or supported keyword pairs (Ex: `#ifdef/#endif`)
 ```
 %
 ```
+
+
+### Go to changes
+
+- `g;` - Go to the next older change.
+- `g,` - Go to the next newer change.
 
 
 ### Folding
