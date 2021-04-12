@@ -86,6 +86,10 @@
   * [Ex mode substitutions](#ex-mode-substitutions)
   * [Searching in Vim](#searching-in-vim)
     + [Word boundaries](#word-boundaries)
+  * [Quickfix and location list](#quickfix-and-location-list)
+    + [Quickfix](#quickfix)
+      - [Searching and replacing with quickfix](#searching-and-replacing-with-quickfix)
+    + [The location list](#the-location-list)
   * [CtrlP and FZF](#ctrlp-and-fzf)
   * [Display full error messages](#display-full-error-messages)
   * [Debugging syntax or plugin issues with syntime](#debugging-syntax-or-plugin-issues-with-syntime)
@@ -929,6 +933,53 @@ for "the" surrounded by word boundaries:
 ```
 /\<the\>
 ```
+
+
+### Quickfix and location list
+
+The quickfix list and location list are two modes that allow processing lists of
+data related to the file being edited.
+
+To move between either the quickfix list or location list and the main window,
+use the same window navigation keys - `C-w <hjkl>`.
+
+#### Quickfix
+
+The quickfix list is global to the current session of vim.
+
+- `:copen` - Open the quickfix window.
+- `:ccl` or `:cclose` - Close the quickfix window.
+- `:cnext` or `:cn` - Go to the next item on the list.
+- `:cprev` or `:cp` - Go to the previous item on the list.
+- `:cfirst` - Go to the first item on the list.
+- `:clast` - Go to the last item on the list.
+- `:cc <n>` - Go to the nth item on the list.
+- `:cdo` - run a command for each item in the list
+- `:cfdo` - run a command for each file in the list
+
+##### Searching and replacing with quickfix
+
+To search and replace in a project with `:cdo`:
+
+1. `:grep foo -r **/*.py`
+2. `:cdo s/foo/bar/ | update` - to operate on each match
+   or, to operate on each file: `:cfdo %s/foo/bar/g | update`
+3. `:cfdo bd` - to close the opened buffers
+
+
+#### The location list
+
+The location list is similar to quickfix but is local to the current buffer.
+
+- `:lopen` - Open the location list.
+- `:lcl` or `:lclose` - Close the location list.
+- `:lnext` - Go to the next item on the list.
+- `:lprev` - Go to the previous item on the list.
+- `:lfirst` - Go to the first item on the list.
+- `:llast` - Go to the last item on the list.
+- `:ll <n>` - Go to the nth item on the list.
+- `:ldo` - run a command for each item in the list
+- `:lfdo` - run a command for each file in the list
 
 
 ### CtrlP and FZF
