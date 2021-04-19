@@ -87,6 +87,7 @@
   * [Ex mode substitutions](#ex-mode-substitutions)
   * [Searching in Vim](#searching-in-vim)
     + [Word boundaries](#word-boundaries)
+  * [Built-in completion](#built-in-completion)
   * [Quickfix and location list](#quickfix-and-location-list)
     + [Quickfix](#quickfix)
       - [Searching and replacing with quickfix](#searching-and-replacing-with-quickfix)
@@ -940,6 +941,23 @@ for "the" surrounded by word boundaries:
 ```
 /\<the\>
 ```
+
+
+### Built-in completion
+
+Vim includes several handy completion options which can reduce the need for a
+plugin. See `:h ins-completion` for more info. A subset:
+
+- `C-x C-n` - complete from keywords in the current file
+- `C-x C-i` - complete from keywords in the current file and included files
+- `C-x C-f` - complete from filenames
+- `C-x C-l` - complete from whole lines in the file
+- `C-x C-d` - complete from definitions or macros
+- `C-x C-]` - complete from tags
+- `C-x C-u` - compete from a user-defined `completefunc` function (see `:h completefunc`)
+- `C-x C-v` - complete from vim command line options
+
+Use `C-n` and `C-p` to navigate through the completion list.
 
 
 ### Quickfix and location list
