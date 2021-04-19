@@ -806,6 +806,7 @@ For a keyword under the cursor:
 - `g*` and `g#` to search forward/backward
 - `gf` to open the file under the cursor
 - `g]` to jump to a tag definition
+- `:dj /foo` to jump to the definition of a class or function matching the pattern `foo`. See `set define` for the specification of a definition.
 
 
 ### Go to matching brace
