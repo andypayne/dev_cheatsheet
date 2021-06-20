@@ -1649,3 +1649,6 @@ some_shitty_module.some_function()
 
 [zoxide](https://github.com/ajeetdsouza/zoxide) - on my todo list to try - "zoxide is a blazing fast replacement for your cd command, inspired by z and z.lua. It keeps track of the directories you use most frequently, and uses a ranking algorithm to navigate to the best match."
 
+Also see [modern unix](https://github.com/ibraheemdev/modern-unix).
+
+
