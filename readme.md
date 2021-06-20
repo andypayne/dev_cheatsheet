@@ -150,6 +150,7 @@
   * [Key repeats on MacOS](#key-repeats-on-macos)
   * [Forcing time server sync](#forcing-time-server-sync)
 - [PyWhat](#pywhat)
+- [FuckIt.py](#fuckitpy)
 
 <TOC>
 
@@ -1626,5 +1627,19 @@ Possible Identification
 ┡━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
 │ 123-45-6789  │ American Social Security Number │ An American Identification Number │
 └──────────────┴─────────────────────────────────┴───────────────────────────────────┘
+```
+
+
+## FuckIt.py
+
+I haven't tried [FuckIt.py](https://github.com/ajalt/fuckitpy) yet, but it sounds useful. From the docs: "FuckIt.py uses state-of-the-art technology to make sure your Python code runs whether it has any right to or not. Some code has an error? Fuck it."
+
+One way to use it is by replacing `import`:
+
+```python
+import fuckit
+#import some_shitty_module
+fuckit('some_shitty_module')
+some_shitty_module.some_function()
 ```
 
