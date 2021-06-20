@@ -152,6 +152,7 @@
 - [PyWhat](#pywhat)
 
 <TOC>
+
 ## Dotfiles - Thoughtbot
 
 I'm using the [Thoughtbot Dotfiles](https://github.com/thoughtbot/dotfiles) with
