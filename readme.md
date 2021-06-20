@@ -151,6 +151,7 @@
   * [Forcing time server sync](#forcing-time-server-sync)
 - [PyWhat](#pywhat)
 - [FuckIt.py](#fuckitpy)
+- [zoxide](#zoxide)
 
 <TOC>
 
@@ -1642,4 +1643,9 @@ import fuckit
 fuckit('some_shitty_module')
 some_shitty_module.some_function()
 ```
+
+
+## zoxide
+
+[zoxide](https://github.com/ajeetdsouza/zoxide) - on my todo list to try - "zoxide is a blazing fast replacement for your cd command, inspired by z and z.lua. It keeps track of the directories you use most frequently, and uses a ranking algorithm to navigate to the best match."
 
