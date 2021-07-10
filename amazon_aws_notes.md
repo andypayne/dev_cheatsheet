@@ -6,6 +6,12 @@
 
 Instructions: [Install the EB CLI](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html), which will probably send you to the [elastic beanstalk github repo](https://github.com/aws/aws-elastic-beanstalk-cli-setup) to clone and install from there.
 
+To avoid the installation attempting to download and install its own python stack, specify the location of your python installation (as mentioned in [Advanced use](https://github.com/aws/aws-elastic-beanstalk-cli-setup#3-advanced-use):
+
+```shell
+python scripts/ebcli_installer.py --python-installation /opt/anaconda3/bin/python
+```
+
 
 ### Create an environment for a git repo
 
