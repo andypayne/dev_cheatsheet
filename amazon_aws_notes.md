@@ -2,6 +2,11 @@
 
 ## Elastic Beanstalk
 
+### Install the `eb` command line tools
+
+Instructions: [Install the EB CLI](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html), which will probably send you to the [elastic beanstalk github repo](https://github.com/aws/aws-elastic-beanstalk-cli-setup) to clone and install from there.
+
+
 ### Create an environment for a git repo
 
 #### 0. Run `eb init` in the project if it hasn't been done.
