@@ -20,7 +20,7 @@ python scripts/ebcli_installer.py --python-installation /opt/anaconda3/bin/pytho
 Select the region, the project name, the application (or create a new one), and whether you want ssh enabled.
 
 
-#### 1. Add an .npmrc file
+#### 1. Add an .npmrc file (for node.js projects)
 
 When running `eb create` (below) you may get errors like this:
 
