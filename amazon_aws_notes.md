@@ -179,6 +179,8 @@ OR, add a bucket policy that allows anyone to read objects from this S3 bucket:
 
 #### 2. Create a Distribution in CloudFront
 
+__Note:__ See step #11 below about registering an SSL certificate, since that may need to be completed first.
+
 1. In CloudFront, click `Create Distribution`.
 2. Under `Web`, select `Get Started`.
 3. For `Origin Domain Name`, select the name of the S3 bucket created previously.
@@ -189,7 +191,7 @@ OR, add a bucket policy that allows anyone to read objects from this S3 bucket:
 8. Select the allowed HTTP verbs you want to use.
 9. For `Forward Cookies`, select `All` if needed.
 10. Under `Distribution Settings`, for `Alternate Domain Names (CNAMEs)`, add the public-facing domain name(s) you are using.
-11. Select the `SSL Certificate` that you are using. If you need a custom certificate and haven't created one yet, you will probably have to restart the CloudFront distribution creation process after creating a custom certificate with `ACM`.
+11. Select the `SSL Certificate` that you are using. If you need a custom certificate and haven't created one yet, you will probably have to restart the CloudFront distribution creation process after creating a custom certificate with [AWS Certificate Manager (ACM)](https://aws.amazon.com/certificate-manager/). If you have a certificate for your domain that you created with another service, you may need to import it into ACM to use it. Also note that ACM manages certificates in multiple regions, and according to [Amazon docs](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html#https-requirements-aws-region), you must use the `US East (N. Virginia)` region for your certificate for use with Cloudfront: "If you want to require HTTPS between viewers and CloudFront, you must change the AWS Region to US East (N. Virginia) in the AWS Certificate Manager console before you request or import a certificate. If you want to require HTTPS between CloudFront and your origin, and you're using an ELB load balancer as your origin, you can request or import a certificate in any Region."
 12. For `Default Root Object`, add your root file (`index.html`).
 13. Click `Create Distribution`.
 14. Edit the distribution - under `Error Pages`, select `Create Custom Error Response`.
