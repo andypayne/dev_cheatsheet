@@ -216,4 +216,5 @@ aws s3 sync build/ s3://proj.example.com --delete
 
 Then probably create an invalidation in CloudFront.
 
+Here's more info on [configuring the AWS command line tool](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html).
 
