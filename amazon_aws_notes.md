@@ -152,6 +152,26 @@ We'll use CloudFront to achieve SSL support.
     ]
 }
 ```
+OR, add a bucket policy that allows anyone to read objects from this S3 bucket:
+```json
+{
+    "Id": "ExampleComAllowPublicAccess",
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::bucket.example.com/*"
+            ]
+        }
+    ]
+}
+```
 6. Go to `Properties -> Static website hosting`. Enable this option, and select `Host a static website`.
 7. Set the proper `Index document` (`index.html`).
 8. In order to support client-side routing, the `Error document` should also be set to the same root document (`index.html`).
