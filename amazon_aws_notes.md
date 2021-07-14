@@ -208,7 +208,7 @@ Create a new record set of type `A` with an `Alias` with target pointing to the 
 
 #### 4. Deploy
 
-With the AWS command line tool:
+With the [AWS command line tool](https://aws.amazon.com/cli/):
 
 ```shell
 aws s3 sync build/ s3://proj.example.com --delete
