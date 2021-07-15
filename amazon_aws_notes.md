@@ -102,6 +102,8 @@ Printing Status:
 
 #### 3. Modify the load balancer to support HTTPS traffic
 
+Also see [Amazon's documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/configuring-https-elb.html).
+
 To support HTTPS traffic externally and route it to the listener using HTTP:
 
 1. Go to the Elastic Beanstalk web console and configure the load balancer.
