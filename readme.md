@@ -859,6 +859,17 @@ To reenable it:
 ```
 
 
+### Count words, characters, etc
+
+To count characters, bytes, words, and lines in a selection, select a region and type:
+
+```
+g C-g
+```
+
+This also works on the entire document with no selection active.
+
+
 ### Macros
 
 #### Record a macro to surround a word in double quotes
