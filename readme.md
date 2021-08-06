@@ -1280,6 +1280,12 @@ By default, ripgrep will ignore binary files, hidden files, and files listed in
             -uu is roughly equivalent to grep -r and -uuu is roughly equivalent to grep -a -r.
 ```
 
+Another way to specifically ignore version control ignore files such as
+.gitignore files is to use `--no-ignore-vcs`:
+```
+rg --no-ignore-vcs <pattern>
+```
+
 
 #### Include all files when searching:
 ```zsh
