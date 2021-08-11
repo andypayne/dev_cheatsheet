@@ -220,3 +220,386 @@ Then probably create an invalidation in CloudFront.
 
 Here's more info on [configuring the AWS command line tool](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html).
 
+
+## Elastic Container Service (ECS)
+
+*TODO:* Write up a consolidated policy granting all the necessary permissions.
+
+### Install AWS Copilot
+
+- [AWS Copilot](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Copilot.html)
+- [Getting started with Amazon ECS using AWS Copilot](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/getting-started-aws-copilot-cli.html)
+
+```shell
+sudo curl -Lo /usr/local/bin/copilot https://github.com/aws/copilot-cli/releases/latest/download/copilot-darwin && sudo chmod +x /usr/local/bin/copilot && copilot --help
+```
+
+### Deploy the sample app
+
+```shell
+git clone https://github.com/aws-samples/amazon-ecs-cli-sample-app.git demo-app && \
+cd demo-app && copilot init --app demo --name api --type 'Load Balanced Web Service' --dockerfile './Dockerfile' --port 80 --deploy
+```
+
+### Adding permissions
+
+Two errors may be encountered with your user:
+
+ssn:GetParameter permission error:
+```
+AccessDeniedException: User: arn:aws:iam::1234567890:user/my-user-name is not authorized to perform: ssm:GetParameter on resource: ...
+```
+
+cloudformation:DescribeStacks permission error:
+```
+AccessDeniedException: User: arn:aws:iam::1234567890:user/my-user-name is not authorized to perform: cloudformation:DescribeStacks on resource: ...
+```
+
+Add these two policies to your user account in IAM:
+
+- AmazonSSMFullAccess
+- AWSCloudFormationFullAccess
+
+### Docker Errors
+
+```shell
+git clone https://github.com/aws-samples/amazon-ecs-cli-sample-app.git demo-app && \
+cd demo-app && copilot init --app demo --name api --type 'Load Balanced Web Service' --dockerfile './Dockerfile' --port 80 --deploy
+Cloning into 'demo-app'...
+remote: Enumerating objects: 12, done.
+remote: Counting objects: 100% (12/12), done.
+remote: Compressing objects: 100% (12/12), done.
+remote: Total 12 (delta 1), reused 5 (delta 0), pack-reused 0
+Unpacking objects: 100% (12/12), done.
+zsh: command not found:
+Welcome to the Copilot CLI! We're going to walk you through some questions
+to help you get set up with a containerized application on AWS. An application is a collection of
+containerized services that operate together.
+
+Ok great, we'll set up a Load Balanced Web Service named api in application demo listening on port 80.
+
+✘ Failed to create the infrastructure to manage services and jobs under application demo.
+
+✘ execute app init: wait until stack demo-infrastructure-roles create is complete: ResourceNotReady: failed waiting for successful resource state
+```
+
+Running through the individual process steps showed that the local docker daemon was not running:
+```
+Docker daemon is not responsive; Copilot won't build from a Dockerfile.
+```
+
+Running `docker info` confirmed this:
+```shell
+docker info -f '{{json . }}'
+{"ServerErrors":["Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?"],"ClientInfo":{"Debug":false,"Plugins":[],"Warnings":null}}
+```
+
+So [start the docker daemon](https://docs.docker.com/config/daemon/).
+
+Then `docker info`:
+```shell
+docker info -f '{{json . }}'
+{"ID":"ABCD:...","Containers":0,"ContainersRunning":0,"ContainersPaused":0,"ContainersStopped":0,"Images":0,"Driver":"overlay2","DriverStatus":[["Backing Filesystem","extfs"],["Supports d_type","true"], ...}
+```
+
+### Deploy Errors
+
+The deployment still failed with:
+```
+copilot init --app demo --name api --type 'Load Balanced Web Service' --dockerfile './Dockerfile' --port 80 --deploy
+
+Welcome to the Copilot CLI! We're going to walk you through some questions
+to help you get set up with a containerized application on AWS. An application is a collection of
+containerized services that operate together.
+
+Ok great, we'll set up a Load Balanced Web Service named api in application demo listening on port 80.
+
+✘ Failed to create the infrastructure to manage services and jobs under application demo.
+
+✘ execute app init: wait until stack demo-infrastructure-roles create is complete: ResourceNotReady: failed waiting for successful resource state
+```
+
+I went to CloudFormation and found the stack and deleted it. After rerunning the `copilot init` command, I still get the same error.
+
+Looking in the Stack details in CloudFormation (Stack -> Events), there is another permission error:
+```
+API: iam:GetRole User: arn:aws:iam::1234567890:user/my-user-name is not authorized to perform: iam:GetRole on resource: role demo-adminrole
+```
+
+I added the `IAMReadOnlyAccess` permission to my user account in IAM and ran again.
+
+This time CloudFormation shows a new permission error:
+```
+API: iam:CreateRole User: arn:aws:iam::1234567890:user/my-user-name is not authorized to perform: iam:CreateRole on resource: arn:aws:iam::909724554299:role/demo-adminrole
+```
+
+So I added the `IAMFullAccess` permission and ran again.
+
+This time there were no errors in the initial CloudFormation events, and the process made it further. But then it failed with more errors:
+```shell
+copilot init --app demo --name api --type 'Load Balanced Web Service' --dockerfile './Dockerfile' --port 80 --deploy
+Welcome to the Copilot CLI! We're going to walk you through some questions
+to help you get set up with a containerized application on AWS. An application is a collection of
+containerized services that operate together.
+
+Ok great, we'll set up a Load Balanced Web Service named api in application demo listening on port 80.
+
+✔ Created the infrastructure to manage services and jobs under application demo..
+
+✔ Wrote the manifest for service api at copilot/api/manifest.yml
+Your manifest contains configurations like your container size and port (:80).
+
+✔ Created ECR repositories for service api..
+
+
+✔ Linked account 909724554299 and region us-west-2 to application demo..
+
+✔ Proposing infrastructure changes for the demo-test environment.
+- Creating the infrastructure for the demo-test environment.                         [rollback complete]  [172.9s]
+  The following resource(s) failed to create: [InternetGateway, Cluster,
+   VPC]. Rollback requested by user.
+  - An IAM Role for AWS CloudFormation to manage resources                           [not started]
+  - An ECS cluster to group your services                                            [delete complete]    [0.0s]
+    Resource creation cancelled
+  - Enable long ARN formats for the authenticated AWS principal                      [not started]
+  - An IAM Role to describe resources in your environment                            [not started]
+  - A security group to allow your containers to talk to each other                  [not started]
+  - An Internet Gateway to connect to the public internet                            [delete complete]    [0.0s]
+    API: ec2:CreateInternetGateway You are not authorized to perform this
+    operation. Encoded authorization failure message: rFesh...
+  - Private subnet 1 for resources with no internet access                           [not started]
+  - Private subnet 2 for resources with no internet access                           [not started]
+  - Public subnet 1 for resources that can access the internet                       [not started]
+  - Public subnet 2 for resources that can access the internet                       [not started]
+  - A Virtual Private Cloud to control networking of your AWS resources              [delete complete]    [0.0s]
+    API: ec2:CreateVpc You are not authorized to perform this operation. E
+    ncoded authorization failure message: OKk-Ia8PA_mlTDWXTupzLo2QYz3JaVCS
+    UPgy9XkNm-gRymx8tHObROoauSl6PA0QWv4Is6BIAMV9Ymn-44PdkXjGmODgbPRt-Rs_jz
+    9qGfJyiZfwVBcfGUo1nFG07G059vN4Y57X0owHltEG4Rl3VgB3bgtdbilOOYStty6V5Wbw
+    4ZvhL6OldwEiahIblZjewu-WF3IsvOABte2iwkNwc7h_eMvVYajLp3gwqIf3e-0M9fahBf
+    9lPgDalXCM39XIyWTp_cvetx1WQ6JniBoQc-YxEYy2YyxMFcIaiSlJcSZul7o49BQmaySv
+    t-goxShWW4WNqTcliv1vUmdmna_lI2ayzjDm1y0tdZlav7LLp8w6oXS7VdQgew8Rurhqdx
+    acYh4LdvRf8CklrirmJWSKn6pPWE-_x-PakFSJAXetmKyWapIlUWzOR2C3BB_7T5TiFAlK
+    vbxwH13GrWjJLdnRCRLL7fL9JjmxnM_imuUAi2qkTwz5nuEw0njbDCCvSYT6Vs3YTsWC
+✘ stack demo-test did not complete successfully and exited with status ROLLBACK_COMPLETE
+```
+
+
+CloudFormation shows other errors, including:
+```
+API: ec2:CreateInternetGateway You are not authorized to perform this operation. ...
+```
+
+and:
+```
+API: ec2:CreateVpc You are not authorized to perform this operation. ...
+```
+
+But trying to add the `AmazonEC2FullAccess` permission failed, because of a policy limit:
+```
+Limit exceeded
+Your request exceeds one of the limits for this account. Remove one or more existing items and try again. Learn more
+Cannot exceed quota for PoliciesPerUser: 10
+```
+
+So I had to remove some policies and add `AmazonEC2FullAccess`.
+
+Rerunning results in another permission error:
+```
+User: arn:aws:iam::1234567890:user/my-user-name is not authorized to perform: ecs:DescribeClusters on resource: ...
+```
+
+So I added the `AmazonECS_FullAccess` permission. Rerunning results in yet another permission error:
+
+```
+User: arn:aws:iam::1234567890:user/my-user-name is not authorized to perform: servicediscovery:TagResource on resource: ...
+```
+
+So I added the `AWSCloudMapFullAccess` permission and reran. Of course there was another permission error:
+
+```
+User: arn:aws:iam::1234567890:user/my-user-name is not authorized to perform: lambda:CreateFunction on resource: ...
+```
+
+So I added the `AWSLambda_FullAccess` permission and reran. I think it's getting
+closer. Now another permission error:
+
+```
+✘ initiate image builder pusher: get repository URI: ecr describe repository demo/api: AccessDeniedException: User: arn:aws:iam::1234567890:user/my-user-name is not authorized to perform: ecr:DescribeRepositories on resource: ...
+```
+
+So I added the `AmazonElasticContainerRegistryPublicFullAccess` permission and tried again. That resulted in the same error, so it must hae been the wrong permission.
+
+
+Next I noticed that there was an existing custom policy that appeared to cover this, so I added it. The policy:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:BatchGetImage",
+                "ecr:DescribeImages",
+                "ecr:GetAuthorizationToken",
+                "ecr:DescribeRepositories",
+                "ecr:ListImages",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetRepositoryPolicy"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+Rerunning resulted in another permission error:
+```
+AccessDenied: User: arn:aws:iam::1234567890:user/my-user-name is not authorized to perform: sts:AssumeRole on resource: ...
+```
+
+So I added this permission to the policy:
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:BatchGetImage",
+                "ecr:DescribeImages",
+                "ecr:GetAuthorizationToken",
+                "ecr:DescribeRepositories",
+                "ecr:ListImages",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetRepositoryPolicy",
+                "sts:AssumeRole"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+Rerun. So close. Another one:
+
+```
+denied: User: arn:aws:iam::123567890:user/my-user-name is not authorized to perform: ecr:InitiateLayerUpload on resource: ...
+```
+
+So I added `ecr:InitiateLayerUpload` to the policy. Rerun. It never ends:
+
+```
+denied: User: arn:aws:iam::1234567890:user/my-user-name is not authorized to perform: ecr:UploadLayerPart on resource: ...
+```
+
+Add `ecr:UploadLayerPart` to the policy. Rerun. Another:
+```
+denied: User: arn:aws:iam::1234567890:user/my-user-name is not authorized to perform: ecr:CompleteLayerUpload on resource: ...
+```
+
+Add `ecr:CompleteLayerUpload` to the policy. Rerun. Another:
+```
+denied: User: arn:aws:iam::1234567890:user/my-user-name is not authorized to perform: ecr:PutImage on resource: ...
+```
+
+Add `ecr:PutImage` to the policy. Rerun. Success.
+
+```shell
+copilot app ls
+demo
+```
+
+```shell
+copilot app show
+About
+
+  Name              demo
+  Version           v1.0.2
+  URI
+
+Environments
+
+  Name              AccountID           Region
+  ----              ---------           ------
+  test              909724554299        us-west-2
+
+Services
+
+  Name              Type
+  ----              ----
+  api               Load Balanced Web Service
+
+Pipelines
+
+  Name
+  ----
+
+```
+
+```shell
+copilot env ls
+test
+```
+
+```shell
+copilot env show
+Only found one environment, defaulting to: test
+About
+
+  Name              test
+  Production        false
+  Region            us-west-2
+  Account ID        909724554299
+
+Services
+
+  Name              Type
+  ----              ----
+  api               Load Balanced Web Service
+
+Tags
+
+  Key                  Value
+  ---                  -----
+  copilot-application  demo
+  copilot-environment  test
+
+```
+
+```shell
+copilot svc ls
+Name                Type
+----                ----
+api                 Load Balanced Web Service
+```
+
+```shell
+copilot svc status
+Found only one deployed service api in environment test
+Task Summary
+
+  Running   ██████████  1/1 desired tasks are running
+  Health    ██████████  1/1 passes HTTP health checks
+
+Tasks
+
+  ID        Status      Revision    Started At    HTTP Health
+  --        ------      --------    ----------    -----------
+  d4939655  RUNNING     1           11 hours ago  HEALTHY
+```
+
+```shell
+copilot svc logs
+Found only one deployed service api in environment test
+copilot/api/d4939655fda94 10.0.0.33 - - [11/Aug/2021:15:39:59 +0000] "GET / HTTP/1.1" 200 3165 "-" "ELB-HealthChecker/2.0" "-"
+copilot/api/d4939655fda94 10.0.1.194 - - [11/Aug/2021:15:40:00 +0000] "GET / HTTP/1.1" 200 3165 "-" "ELB-HealthChecker/2.0" "-"
+copilot/api/d4939655fda94 10.0.0.33 - - [11/Aug/2021:15:40:29 +0000] "GET / HTTP/1.1" 200 3165 "-" "ELB-HealthChecker/2.0" "-"
+copilot/api/d4939655fda94 10.0.1.194 - - [11/Aug/2021:15:40:30 +0000] "GET / HTTP/1.1" 200 3165 "-" "ELB-HealthChecker/2.0" "-"
+copilot/api/d4939655fda94 10.0.0.33 - - [11/Aug/2021:15:40:59 +0000] "GET / HTTP/1.1" 200 3165 "-" "ELB-HealthChecker/2.0" "-"
+```
