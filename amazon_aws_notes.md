@@ -603,3 +603,50 @@ copilot/api/d4939655fda94 10.0.0.33 - - [11/Aug/2021:15:40:29 +0000] "GET / HTTP
 copilot/api/d4939655fda94 10.0.1.194 - - [11/Aug/2021:15:40:30 +0000] "GET / HTTP/1.1" 200 3165 "-" "ELB-HealthChecker/2.0" "-"
 copilot/api/d4939655fda94 10.0.0.33 - - [11/Aug/2021:15:40:59 +0000] "GET / HTTP/1.1" 200 3165 "-" "ELB-HealthChecker/2.0" "-"
 ```
+
+
+### Amazon ECS using the AWS CDK
+
+Article: [Getting started with Amazon ECS using the AWS CDK](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/tutorial-ecs-web-server-cdk.html)
+
+```shell
+npm install -g aws-cdk
+```
+
+```shell
+cdk init --language python
+```
+
+```shell
+source .venv/bin/activate
+```
+
+```shell
+pip install -U pip
+```
+
+```shell
+python -m pip install -r requirements.txt
+```
+
+```shell
+python -m pip install aws-cdk.aws-ecs-patterns
+```
+
+Available for importing:
+```
+aws_cdk.aws_ecs
+aws_cdk.aws_ecs_patterns
+```
+
+Edit `hello_ecs/hello_ecs_stack.py`.
+
+```shell
+cdk synth
+```
+
+```shell
+cdk deploy
+```
+
+
