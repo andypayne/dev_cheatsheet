@@ -621,6 +621,11 @@ List paste buffers:
 <prefix>:list-buffers
 ```
 
+or:
+```
+<prefix>=
+```
+
 Show the current buffer:
 ```
 <prefix>:show-buffer
