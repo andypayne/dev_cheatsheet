@@ -114,6 +114,7 @@
   * [vim-hug-neovim-rpc pythonx error](#vim-hug-neovim-rpc-pythonx-error)
 - [Neovim](#neovim)
   * [Dev icons for Nerdtree, etc](#dev-icons-for-nerdtree-etc)
+  * [Commenting - commentary.vim](#commenting---commentaryvim)
 - [Find command - Ripgrep](#find-command---ripgrep)
   * [Show only filenames of files whose contents match the pattern](#show-only-filenames-of-files-whose-contents-match-the-pattern)
   * [Search only files of a given type with -t (example: python files)](#search-only-files-of-a-given-type-with--t-example-python-files)
@@ -1275,6 +1276,13 @@ To install a patched nerd font on Mac:
 brew tap homebrew/cask-fonts
 brew install font-jetbrains-mono-nerd-font
 ```
+
+### Commenting - commentary.vim
+
+[Commentary.vim](https://github.com/tpope/vim-commentary) - also works with vim
+
+- `gcc` - toggle comment on a line (or a count of lines)
+- `gc` - toggle comment for a motion (use with visual mode)
 
 
 ## Find command - Ripgrep
