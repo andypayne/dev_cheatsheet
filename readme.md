@@ -522,6 +522,17 @@ Switch sessions quickly and visually with:
 ```
 
 
+### Switch to the next and previous sessions
+
+```
+<prefix> (
+```
+
+```
+<prefix> )
+```
+
+
 ### Attach to the last session
 ```
 tmux a
