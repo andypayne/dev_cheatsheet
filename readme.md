@@ -72,6 +72,7 @@
     + [Move/swap the current pane](#moveswap-the-current-pane)
 - [Vim](#vim)
   * [System clipboard access (linux)](#system-clipboard-access-linux)
+  * [System clipboard access (mac)](#system-clipboard-access-mac)
   * [Edit commands](#edit-commands)
   * [Leader key](#leader-key)
   * [Go to definition/file/etc](#go-to-definitionfileetc)
@@ -811,7 +812,30 @@ set clipboard=unnamed
 set clipboard=unnamedplus
 ```
 
-Use `"+y` to yank to the system clipboard.
+Use `"+y` to yank (copy) to the system clipboard.
+
+
+### System clipboard access (mac)
+
+To copy to the system clipboard (or primary clipboard) on macos:
+```
+"+y
+```
+or:
+```
+"*y
+```
+
+For more info:
+```
+:help quoteplus
+```
+or:
+```
+:help quotestar
+```
+
+Also see [accessing the system clipboard](https://vim.fandom.com/wiki/Accessing_the_system_clipboard).
 
 
 ### Edit commands
