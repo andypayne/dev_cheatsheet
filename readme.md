@@ -45,6 +45,7 @@
   * [Kill the current session](#kill-the-current-session)
   * [Detach from a session](#detach-from-a-session)
   * [List sessions](#list-sessions)
+  * [Switch to the next and previous sessions](#switch-to-the-next-and-previous-sessions)
   * [Attach to the last session](#attach-to-the-last-session)
   * [List key bindings](#list-key-bindings)
   * [Selecting text](#selecting-text)
