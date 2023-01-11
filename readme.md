@@ -64,6 +64,7 @@
   * [Panes in Tmux](#panes-in-tmux)
     + [Split pane horizontally](#split-pane-horizontally)
     + [Split pane vertically](#split-pane-vertically)
+    + [Cycle through pane arrangements](#cycle-through-pane-arrangements)
     + [Navigate panes (with vim mapping)](#navigate-panes-with-vim-mapping)
     + [Zoom into or out of a pane](#zoom-into-or-out-of-a-pane)
     + [Cycle through zoomed panes](#cycle-through-zoomed-panes)
@@ -742,6 +743,16 @@ With mapping:
 ```
 <prefix>|
 ```
+
+#### Cycle through pane arrangements
+
+To rearrange panes, cycle through arrangements, use the space/spc key:
+```
+<prefix><space>
+```
+
+I hit this on accident periodically, so it's good to know how to correct it.
+
 
 #### Navigate panes (with vim mapping)
 ```
