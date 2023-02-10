@@ -70,3 +70,11 @@ minikube dashboard
 This will open the [dashboard web app](http://127.0.0.1:63406/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/) in your browser.
 
 
+List nodes:
+
+```
+$ kubectl get nodes
+NAME       STATUS   ROLES           AGE   VERSION
+minikube   Ready    control-plane   21h   v1.26.1
+```
+
