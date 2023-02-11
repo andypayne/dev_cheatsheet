@@ -78,3 +78,11 @@ NAME       STATUS   ROLES           AGE   VERSION
 minikube   Ready    control-plane   21h   v1.26.1
 ```
 
+List services:
+
+```
+$ kubectl get services
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   24h
+```
+
