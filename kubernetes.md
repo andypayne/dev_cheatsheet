@@ -159,3 +159,11 @@ root@nginx-depl-56cb8b6d7-7pphh:/#
 ```
 
 
+## Delete a deployment
+
+```
+$ kubectl delete deployment nginx-depl
+deployment.apps "nginx-depl" deleted
+```
+
+
