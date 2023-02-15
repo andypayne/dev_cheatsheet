@@ -137,6 +137,41 @@ $ kubectl create deployment nginx-depl --image=nginx
 deployment.apps/nginx-depl created
 ```
 
+### Create a deployment from a file
+
+Here's an example file `nginx-deployment.yml`:
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.23
+        ports:
+        - containerPort: 80
+
+```
+
+Run:
+
+```
+$ kubectl apply -f nginx-deployment.yml
+deployment.apps/nginx-deployment created
+```
 
 ## Edit a deployment
 
@@ -165,5 +200,6 @@ root@nginx-depl-56cb8b6d7-7pphh:/#
 $ kubectl delete deployment nginx-depl
 deployment.apps "nginx-depl" deleted
 ```
+
 
 
