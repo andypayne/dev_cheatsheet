@@ -29,7 +29,7 @@ To convert from docker-compose to kubernetes, use [kompose](https://kompose.io/)
 
 ### Install kompose
 
-On mac:
+On Mac:
 
 ```
 curl -L https://github.com/kubernetes/kompose/releases/download/v1.26.0/kompose-darwin-amd64 -o kompose
@@ -48,6 +48,9 @@ INFO Kubernetes file "db-service.yaml" created
 INFO Kubernetes file "db-deployment.yaml" created
 INFO Kubernetes file "db-claim0-persistentvolumeclaim.yaml" created
 ```
+
+This was run on a PostgreSQL instance. See [info on the volume mount issue](https://github.com/kubernetes/kompose/issues/1097).
+
 
 ### Run kubectl on the files
 
