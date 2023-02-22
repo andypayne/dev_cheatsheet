@@ -23,6 +23,39 @@ minikube start --driver=docker --alsologtostderr
 ```
 
 
+## Convert from docker-compose
+
+To convert from docker-compose to kubernetes, use [kompose](https://kompose.io/). More info in this article: [Translate a Docker Compose File to Kubernetes Resources](https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/)
+
+### Install kompose
+
+On mac:
+
+```
+curl -L https://github.com/kubernetes/kompose/releases/download/v1.26.0/kompose-darwin-amd64 -o kompose
+chmod +x kompose
+mv kompose <somewhere in your path>
+```
+
+### Run kompose to create config files
+
+Run `kompose convert` on the `docker-compose.yml` file:
+
+```
+$ kompose convert
+WARN Volume mount on the host "/.../data" isn't supported - ignoring path on the host
+INFO Kubernetes file "db-service.yaml" created
+INFO Kubernetes file "db-deployment.yaml" created
+INFO Kubernetes file "db-claim0-persistentvolumeclaim.yaml" created
+```
+
+### Run kubectl on the files
+
+```
+kubectl apply -f db-claim0-persistentvolumeclaim.yaml,db-deployment.yaml,db-service.yaml
+```
+
+
 ## Status/Monitoring
 
 The status should show that it's running:
