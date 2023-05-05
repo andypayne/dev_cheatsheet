@@ -2,6 +2,15 @@
 
 ## Installing
 
+### Current
+
+```shell
+npm i -g typescript
+```
+
+
+### Older
+
 In addition to installing locally for a project, I installed TypeScript globally:
 
 ```zsh
@@ -18,6 +27,26 @@ autocmd FileType typescript :set makeprg=node_modules/bin/tsc
 ```
 
 I haven't tested it.
+
+
+## Initializing a project
+
+Initialize:
+
+```shell
+tsc --init
+```
+
+Then make a `src` and a `build` dir (or whichever project layout you prefer). Then edit `tsconfig.json` to set `rootDir` and `outDir`:
+```
+  ...
+  "rootDir": "./src",
+  ...
+  "outDir": "./build",
+  ...
+```
+
+Now, running `tsc` with no arguments will work.
 
 
 ## Migrating a React project
