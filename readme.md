@@ -1399,7 +1399,7 @@ rg \
   --no-ignore-vcs \  # Don't read version control files for ignores
   -g '!*.txt' \      # Exclude files matching *.txt
   -g '!*config*' \   # Exclude files matching *config*
-  -li 'foo' \    # Search for "foo" surrounded by word boundaries, ignoring case
+  -li '\bfoo\b' \    # Search for "foo" surrounded by word boundaries, ignoring case
   ./src              # Search in ./src
 ```
 
