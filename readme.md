@@ -125,6 +125,7 @@
   * [Control over ignore/skip of files](#control-over-ignoreskip-of-files)
     + [Include all files when searching:](#include-all-files-when-searching)
     + [Include all files and search filenames:](#include-all-files-and-search-filenames)
+  * [An example with a regex and file exclusions](#an-example-with-a-regex-and-file-exclusions)
 - [Git and GitHub](#git-and-github)
   * [Diffs](#diffs)
     + [Show code diffs with logs](#show-code-diffs-with-logs)
@@ -1387,6 +1388,19 @@ rg -uuu <pattern>
 #### Include all files and search filenames:
 ```zsh
 rg -uuu --files | rg -uuu <pattern>
+```
+
+
+### An example with a regex and file exclusions
+
+
+```shell
+rg \
+  --no-ignore-vcs \  # Don't read version control files for ignores
+  -g '!*.txt' \      # Exclude files matching *.txt
+  -g '!*config*' \   # Exclude files matching *config*
+  -li 'foo' \    # Search for "foo" surrounded by word boundaries, ignoring case
+  ./src              # Search in ./src
 ```
 
 
