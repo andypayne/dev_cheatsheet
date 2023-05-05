@@ -116,6 +116,13 @@
   * [vim-vinegar](#vim-vinegar)
   * [vim-hug-neovim-rpc pythonx error](#vim-hug-neovim-rpc-pythonx-error)
 - [Neovim](#neovim)
+  * [NvChad](#nvchad)
+    + [Installation](#installation-1)
+    + [Updating](#updating)
+    + [Commands](#commands)
+    + [Treesitter syntax plugins](#treesitter-syntax-plugins)
+    + [Buffers](#buffers)
+    + [NvimTree](#nvimtree)
   * [Dev icons for Nerdtree, etc](#dev-icons-for-nerdtree-etc)
   * [Commenting - commentary.vim](#commenting---commentaryvim)
 - [Find command - Ripgrep](#find-command---ripgrep)
@@ -1316,6 +1323,91 @@ Error:
 
 ## Neovim
 
+### NvChad
+
+[NvChad](https://nvchad.com/) is a set of Neovim config that provides a lot of defaults.
+
+- [NvChad Installation](https://nvchad.com/docs/quickstart/install)
+- [NvChad Github Repo](https://github.com/NvChad/NvChad)
+
+#### Installation
+
+1. Backup or remove existing nvim config
+
+```shell
+mv ~/.config/nvim ~/tmp/dot_config_nvim.backup
+mv ~/.local/share/nvim ~/tmp/dot_local_share_nvim.backup
+```
+
+2. Install a [nerdfont](https://www.nerdfonts.com/)
+
+Visit [nerdfonts.com](https://www.nerdfonts.com/).
+
+3. Clone the repo into your config location
+
+```shell
+git clone git@github.com:NvChad/NvChad.git ~/.config/nvim --depth 1
+```
+
+4. Run Neovim to see the notes, etc.
+
+
+#### Updating
+
+To update, run:
+
+```shell
+:nvChadUpdate
+```
+
+#### Commands
+
+The default NvChad leader is `space/spc`. Pressing the leader and waiting will cause a modal help box to appear.
+
+| Key/Command | Effect |
+| ----------- | ------ |
+| `<leader> + ch` | Show the NvChad Cheatsheet |
+| `<leader> + th` | Show the theme selector (`C-n`/`C-p` for navigation) |
+| `C-n`           | Toggle NvimTree |
+| `<leader> + ff` | Find a file |
+| `<leader> + fb` | Find a file in the open buffers |
+| `<leader> + /`  | Toggle comment |
+| `<leader> + h`  | Horizontal shell |
+| `<leader> + v`  | Vertical shell |
+
+#### Treesitter syntax plugins
+
+To check which plugins are installed:
+
+```shell
+:TSInstallInfo
+```
+
+To install the syntax highlighting plugin for a given language or file:
+
+```shell
+:TSInstall <type>
+```
+
+#### Buffers
+
+| Key/Command | Effect |
+| ----------- | ------ |
+| `<tab>`, `<shift><tab>` | Cycle through open buffers |
+| `<leader> + x` | Close a buffer |
+
+#### NvimTree
+
+Use `C-n` to toggle NvimTree for file browsing.
+
+| Key/Command | Effect |
+| ----------- | ------ |
+| `m` | Toggle marking a file |
+| `a` | Create a file |
+| `c` | Copy a file |
+| `p` | Paste a file |
+| `r` | Rename a file |
+
 ### Dev icons for Nerdtree, etc
 
 To install a patched nerd font on Mac:
@@ -1399,7 +1491,7 @@ rg \
   --no-ignore-vcs \  # Don't read version control files for ignores
   -g '!*.txt' \      # Exclude files matching *.txt
   -g '!*config*' \   # Exclude files matching *config*
-  -li '\bfoo\b' \    # Search for "foo" surrounded by word boundaries, ignoring case
+  -li 'foo' \    # Search for "foo" surrounded by word boundaries, ignoring case
   ./src              # Search in ./src
 ```
 
