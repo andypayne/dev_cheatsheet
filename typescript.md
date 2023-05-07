@@ -218,8 +218,6 @@ if (aRef.current) {
 ```
 
 
-
-
 ### Testing
 
 TypeError: fsevents is not a function
@@ -233,4 +231,494 @@ Error: Cannot find module 'nan'
 ```shell
 npm install --save-dev nan
 ```
+
+
+## Types
+
+- number
+- string
+- boolean
+- any
+- unknown
+- never
+- tuple
+- array
+- enum
+
+### Type Inference
+
+Type inference works in obvious ways:
+
+```typescript
+let foo = 654_321;  // number
+let bar = "qux";    // string
+let baz = false;    // boolean
+```
+
+### Number
+
+Underscore separation works, like in python, javascript (ES2021), etc:
+
+```typescript
+let foo: number = 654_321;
+```
+
+### String
+
+
+### Boolean
+
+
+### Any
+
+Here, `foo` will have type `any`:
+
+```typescript
+let foo;
+foo = 123;
+foo = "456";
+```
+
+The value of static type checking is lost when using `any`, so it should be minimized.
+
+```typescript
+function foo(x) {   // Here, parameter `x` implicitly has an `any` type.
+  console.log(x);
+}
+```
+
+```typescript
+function foo(x: any) {   // Now `x` is explicitly `any`
+  console.log(x);
+}
+```
+
+To disable the use of implicit `any` types, set `noImplicitAny` to `true` in the project's `tsconfig.json` (usually the default).
+
+
+### Arrays
+
+In Javascript, each element of an array can be of a different type:
+
+```javascript
+let arr = [10, '20', 30];
+```
+
+With a type annotation, this will cause an error:
+```typescript
+let arr: number[] = [10, '20', 30];  // Error
+```
+
+Type inference works here as well, so the type of `num_arr` is inferred to be `number[]`:
+
+```typescript
+let num_arr = [10, 20, 30];
+num_arr.push(40);    // Fine
+num_arr.push('50');  // Error
+```
+
+As before, with arrays (and `noImplicitAny` set to `false`), the type of an empty array will be inferred to be `any[]`:
+```typescript
+let arr4 = [];
+```
+
+
+### Tuples
+
+Tuples are translated into javascript arrays.
+
+```typescript
+let record: [string, number] = ['foo', 123];
+```
+
+
+### Enums
+
+The convention for enums is to use PascalCase.
+
+A non-const enum:
+
+```typescript
+enum Color {
+  Red,
+  Green,
+  Blue,
+};
+
+let aColor: Color = Color.Blue;
+console.log("aColor = ", aColor);
+```
+
+This transpiles to this javascript:
+
+```javascript
+var Color;
+(function (Color) {
+    Color[Color["Red"] = 0] = "Red";
+    Color[Color["Green"] = 1] = "Green";
+    Color[Color["Blue"] = 2] = "Blue";
+})(Color || (Color = {}));
+let aColor = Color.Blue;
+console.log("aColor = ", aColor);
+```
+
+
+Using a `const` enum will cause an optimization:
+
+```typescript
+const enum ConstColor {
+  Red,
+  Green,
+  Blue,
+};
+
+let anotherColor: ConstColor = ConstColor.Blue;
+console.log("anotherColor = ", anotherColor);
+```
+
+This generates less code:
+
+```javascript
+let anotherColor = 2;
+console.log("anotherColor = ", anotherColor);
+```
+
+
+## Functions
+
+Functions that return nothing have an implicit return type of `void`, but ideally the return type should always be explicitly declared.
+
+```typescript
+function logNumber(n: number): void {
+  console.log("n = ", n);
+}
+
+logNumber(42);
+```
+
+### Unused parameters 
+
+Unused parameters in a function will generate a warning and/or error, depending on the value of `noUnusedParameters` in `tsconfig.json`.
+
+```typescript
+function doStuff(x: number): number {
+  return 123;
+}
+```
+
+To explicitly declare that a function does not make use of a parameter, use an underscore (`_`):
+
+```typescript
+function doStuff(_: number): number {
+  return 123;
+}
+```
+
+See `noImplicitReturns` which controls whether code paths that do not return will include an implicit `return undefined`. 
+
+See `noUnusedLocals` which controls whether unused local variables are allowed.
+
+
+### Optional or Default parameters
+
+A default value:
+
+```typescript
+function mul(a: number, b: number = 1): number {
+  return a * b;
+}
+
+let n = mul(43, 65);
+```
+
+
+An optional parameter:
+
+```typescript
+function doSomething(a: number, b?: number): number {
+  if (b) {
+    return a + b;
+  }
+  return a + 2;
+}
+
+let n = doSomething(43);
+```
+
+
+## Objects
+
+An example direct creation of an object with a readonly field:
+
+```typescript
+let record: {
+  readonly id: number,
+  name: string,
+  readonly when: Date,
+} = {
+  id: 123,
+  name: "Alice",
+  when: new Date(),
+};
+```
+
+With the declaration above, this will generate an error:
+
+```typescript
+record.id += 10;
+```
+
+
+## Type Aliases
+
+`RecordType` is a type alias:
+
+```typescript
+type RecordType = {
+  readonly id: number,
+  name: string,
+  when: Date,
+  uselessFn: () => void,
+}
+
+let aRecord: RecordType = {
+  id: 864,
+  name: "Bob",
+  when: new Date(),
+  uselessFn: () => {
+    console.log("Nothing interesting.");
+  }
+}
+```
+
+
+## Union Types
+
+Union type example (and type narrowing):
+
+```typescript
+function logX(x: number | string) {
+  if (typeof x === "number") {
+    console.log("x: number = ", x);
+  } else {
+    console.log("x: string = ", x);
+  }
+}
+
+logX(753);
+logX("some string");
+```
+
+
+## Intersection Types
+
+```typescript
+type Type1 = {
+  m1: () => void
+};
+
+type Type2 = {
+  m2: () => void
+};
+
+type Type3 = Type1 & Type2;
+
+let obj: Type3 = {
+  m1: () => { console.log("Hi from m1")},
+  m2: () => { console.log("Hi from m2")},
+}
+```
+
+
+## Literal Types
+
+```typescript
+type EvensUnderTen = 2 | 4 | 6 | 8; 
+let anEvenNum: EvensUnderTen = 4;
+anEvenNum = 8; // Fine
+anEvenNum = 3; // Error
+```
+
+
+## Nullable Types
+
+`s` is defined as a union of `string` and `null`:
+
+```typescript
+function logUpper(s: string | null) {
+  if (s) {
+    console.log(s.toUpperCase());
+  } else {
+    console.log("no s");
+  }
+}
+
+logUpper("some string");
+logUpper(null);
+```
+
+
+## Optional Chaining
+
+### Optional Property Access Operator
+
+Here `getHoliday` can return a value of type `Holiday | null | undefined`, so callers have to handle those cases. To do this use the optional property access operator (`?` syntax).
+
+```typescript
+type Holiday = {
+  when: Date,
+}
+
+function getHoliday(id: number): Holiday | null | undefined {
+  return id === 0 ? null : { when: new Date() };
+}
+
+let h1 = getHoliday(0);
+// console.log("h1 is on ", h1.when);  // Error: h1 could be null or undefined
+console.log("h1 is on ", h1?.when);
+let h2 = getHoliday(102030);
+console.log("h2 is on ", h2?.when);
+```
+
+Another example where `when` is also an optional Date:
+
+```typescript
+type Holiday = {
+  when?: Date,
+}
+
+let h1: Holiday | null | undefined = { when: new Date() };
+console.log("h1 month: ", h1?.when?.getMonth());
+console.log("h1 day: ", h1?.when?.getDay());
+```
+
+### Optional Element Access Operator
+
+```typescript
+let arr: number[] = [];
+console.log("First element of arr = ", arr?.[0]);
+```
+
+### Optional Call Access Operator
+
+```typescript
+let someFunction: any = null;
+someFunction?.('param');
+```
+
+
+## Class Access Modifiers
+
+- `public` (implied)
+- `private`
+- `readonly`
+
+```typescript
+class SomeClass {
+  // `public` is implicit
+  someProp: number;
+  readonly otherProp: string;
+  private thirdProp: number;
+
+  constructor(someProp: number, otherProp: string) {
+    this.someProp = someProp;
+    this.otherProp = otherProp;
+    this.thirdProp = 2 * someProp;
+  }
+}
+
+const x = new SomeClass(123, "foo");
+x.someProp *= 10;
+x.otherProp = "bar";       // Error
+console.log(x.thirdProp);  // Error
+```
+
+Shorthand notation for defining a class, which works if all access modifiers
+are explicitly specified:
+
+```typescript
+class SomeClass {
+  constructor(
+    public someProp: number,
+    readonly otherProp: string,
+  ) {}
+}
+```
+
+The same with `thirdProp` initialized separately:
+
+```typescript
+class SomeClass {
+  private thirdProp: number;
+  constructor(
+    public someProp: number,
+    readonly otherProp: string
+  ) {
+    this.thirdProp = 2 * this.someProp;
+  }
+}
+```
+
+
+## Interfaces
+
+An interface and an object that implements it:
+
+```typescript
+interface IsShape {
+  name: string;
+  numSides: number;
+  perimeter(sideLength: number): number;
+  area(sideLength: number): number;
+}
+
+const square: IsShape = {
+  name: "square",
+  numSides: 4,
+  perimeter(sideLength: number): number {
+    return this.numSides * sideLength;
+  },
+  area(sideLength: number): number {
+    return sideLength * sideLength;
+  },
+};
+
+console.log("Area of a square with side length 7: ", square.area(7));
+```
+
+A class that implements the interface:
+
+```typescript
+class SomeShapeClass implements IsShape {
+  name: string;
+  numSides: number;
+  color: string;
+
+  constructor (
+    name: string,
+    numSides: number,
+    color: string,
+  ) {
+    this.name = name;
+    this.numSides = numSides;
+    this.color = color;
+  }
+
+  perimeter(sideLength: number): number {
+    return this.numSides * sideLength;
+  }
+
+  area(sideLength: number): number {
+    return sideLength * sideLength;
+  }
+
+  toString(): string {
+    return `Shape: ${this.name}, ${this.numSides} sides, color: ${this.color}`;
+  }
+}
+
+const blueTriangle = new SomeShapeClass("triangle", 3, "blue");
+console.log(blueTriangle.toString());
+```
+
 
