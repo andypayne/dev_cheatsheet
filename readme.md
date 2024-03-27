@@ -168,6 +168,8 @@
 - [PyWhat](#pywhat)
 - [FuckIt.py](#fuckitpy)
 - [zoxide](#zoxide)
+- [seq](#seq)
+- [jot](#jot)
 
 <TOC>
 
@@ -1866,4 +1868,130 @@ some_shitty_module.some_function()
 [zoxide](https://github.com/ajeetdsouza/zoxide) - on my todo list to try - "zoxide is a blazing fast replacement for your cd command, inspired by z and z.lua. It keeps track of the directories you use most frequently, and uses a ranking algorithm to navigate to the best match."
 
 Also see [modern unix](https://github.com/ibraheemdev/modern-unix).
+
+
+## seq
+
+The `seq` command will output sequences of numbers.
+
+
+```
+$ seq 1 10
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+```
+
+A format string can be passed in:
+
+```
+seq -f "some_file_%02.0f.txt" 100 104
+some_file_100.txt
+some_file_101.txt
+some_file_102.txt
+some_file_103.txt
+some_file_104.txt
+```
+
+A separator can be specified:
+
+```
+seq -s ":" 4 12
+4:5:6:7:8:9:10:11:12:
+```
+
+Zero pad to equal width:
+
+```
+seq -w 0 50000 150000
+000000
+050000
+100000
+150000
+```
+
+
+## jot
+
+The `jot` command will output sequences of random numbers.
+
+```
+jot <reps> <begin> <end>
+```
+
+```
+$ jot 10 1 4
+1
+1
+2
+2
+2
+3
+3
+3
+4
+4
+```
+
+Specifying digits of precision:
+
+```
+jot -p 2 5 3 4
+3.00
+3.25
+3.50
+3.75
+4.00
+```
+
+Specifying a string to repeat:
+```
+jot -b hmm 3
+hmm
+hmm
+hmm
+```
+
+Specifying a character to repeat:
+```
+jot -c - A F
+A
+B
+C
+D
+E
+F
+```
+
+Generating random numbers in a range:
+```
+jot -r 8 10 15
+15
+11
+14
+12
+14
+10
+13
+14
+```
+
+Specifying a format string:
+```
+jot -w "Num: %03d" 3 10
+Num: 010
+Num: 011
+Num: 012
+```
+
+`seq` and `jot` can produce the same sequences:
+- `seq 5 10` == `jot 6 5`
+- `seq 5 10` == `jot - 5 10`
 
